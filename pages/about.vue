@@ -3,7 +3,9 @@ import tick1 from '../assets/audio/effects/UIMetal1.wav'
 import tick2 from '../assets/audio/effects/UIMetal2.wav'
 import tick3 from '../assets/audio/effects/UIMetal3.wav'
 import tick4 from '../assets/audio/effects/UIMetal4.wav'
-import UIArp from '../assets/audio/effects/UIArp.wav'
+import MetalHit from '../assets/audio/effects/UIMetalHit.wav'
+
+    const backDelay = ref(false);
 
     const uiTick = () => {
         // play between 4 sound effects, give a 1 in 4 chance of playing a sound, use placeholder url for now
@@ -26,9 +28,14 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
         }
     };
 
-    const uiClick = () => {
-      new Audio(UIArp).play();
-      
+    const uiBack = () => {
+        if(backDelay.value) return;
+        new Audio(MetalHit).play();
+        // prevent spamming of the back button
+        backDelay.value = true;
+        setTimeout(() => {
+            backDelay.value = false;
+        }, 500);
     };
 </script>
 <template>
@@ -37,7 +44,7 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
         <div class="flex flex-col justify-center items-center mt-10">
             <div class="border-2 w-[40rem] border-white rounded-lg bg-neutral-900/10 backdrop-blur-md p-5">
                 <h2 class="text-white font-rodondo text-4xl drop-shadow-sm">Who???</h2>
-                <p class="text-white font-segoue text-lg">Hiii i am a web developer who also is trying to draw. <NuxtLink to="https://twitter.com/Serynnnnn" class="font-bold underline">@Serynnnnn </NuxtLink>on twitter :))<br/> <img src="../assets/images/meifyouevencare.png" class="rounded-lg border-2 border-white w-auto h-40 mt-4" /><span class="text-gray-500 text-xs">(me if you even care...)</span></p>
+                <p class="text-white font-segoue text-lg">Hiii i am a web developer who also is trying to draw. <NuxtLink to="https://twitter.com/Serynnnnn" class="font-bold underline">@Serynnnnn</NuxtLink> on twitter :))<br/> <img src="../assets/images/meifyouevencare.png" class="rounded-lg border-2 border-white w-auto h-40 mt-4" /><span class="text-gray-500 text-xs">(me if you even care...)</span></p>
                 <h2 class="text-white font-rodondo text-4xl drop-shadow-sm mt-4">What???</h2>
                 <p class="text-white font-segoue text-lg">A quiz with no real purpose. i initally wanted to create GeoGeussr for rain world but i realized someone someone had already made it half way through so i pivoted to this. <br/> <NuxtLink to="https://rwgg.isaacelenbaas.com/RWGG.html" class="font-bold underline">Go check out their website!</NuxtLink></p>
                 <h2 class="text-white font-rodondo text-4xl drop-shadow-sm mt-4">Why???</h2>
@@ -47,7 +54,7 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
                 <h2 class="text-white font-rodondo text-4xl drop-shadow-sm mt-4">When???</h2>
                 <p class="text-white font-segoue text-lg">Uhh idk like may 2024?</p>
             </div>
-            <div class="flex justify-center relative w-48 items-center mt-6 h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiClick" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span class="-mt-[5px]">Back</span></UButton></NuxtLink></div>
+            <div class="flex justify-center relative w-48 items-center mt-6 h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiBack" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span class="-mt-[5px]">Back</span></UButton></NuxtLink></div>
         </div>
     </div>
 </template>

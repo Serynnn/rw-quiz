@@ -7,10 +7,10 @@ import rooftops from 'assets/audio/Rooftops.mp3'
     const audio = ref<HTMLAudioElement>();
     const frontDrops = ref("");
     const backDrops = ref("");
+    const currentTrack = ref();
 
     const makeItRain = () => {
       let increment = 0;
-      
 
       while (increment < 100) {
         const randoHundo = Math.floor(Math.random() * (98 - 1 + 1) + 1);
@@ -22,24 +22,32 @@ import rooftops from 'assets/audio/Rooftops.mp3'
       }
     };
     
-    
-
-    
-    
-    const mountMusic = () => {
-      // get current route, sundown for homepage, rooftops for quiz
-      const route = window.location.pathname;
-      audio.value = new Audio(route === '/' ? sundown : rooftops);
-      audio.value?.play();
+    const swapTrack = (track) => {
+        if(currentTrack.value === track) return;
+        audio.value?.pause();
+        audio.value = new Audio(track);
+        currentTrack.value = track;
+        if(track === sundown) audio.value.currentTime = 20;
+        audio.value.loop = true;
+        audio.value.play();
     };
+    
+    // const mountMusic = () => {
+    //   // get current route, sundown for homepage, rooftops for quiz
+    //   audio.value = new Audio(route.value === '/' ? sundown : rooftops);
+    //   currentTrack.value = route.value === '/' ? 'sundown' : 'rooftops';
+    //   // audio.value?.play();
+    // };
+  
 
+    // onMounted(() => {
+    //   // delay by 5 seconds  
+    //   setTimeout(() => {
+    //     mountMusic();
+    //   }, 5000);
+    // });
 
-    onMounted(() => {
-      // delay by 5 seconds  
-      setTimeout(() => {
-        mountMusic();
-      }, 5000);
-    });
+    defineExpose({ swapTrack });
 
     makeItRain();
 </script>
@@ -47,8 +55,8 @@ import rooftops from 'assets/audio/Rooftops.mp3'
   <main class="back-row-toggle h-lvh splat-toggle bg-gradient-to-b from-neutral-950 to-black overflow-y-auto">
     <div v-html="frontDrops" class="rain front-row z-0"></div>
     <div v-html="backDrops" class="rain back-row z-0"></div>
-    <div class="container mx-auto z-20 h-fit flex flex-col justify-center items-center min-h-svh py-40">
-      <NuxtPage />
+    <div class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh py-10">
+      <NuxtPage ref="page" @swapTrack="swapTrack" />
     </div>
   </main>
 </template>
