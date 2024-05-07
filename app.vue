@@ -1,22 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-useHead({
+useSeoMeta({
   title: 'Rain World Trivia',
-  meta: [
-    {
-      property: 'og:title',
-      content: 'Rain World Trivia'
-    },
-    {
-      property: 'og:description',
-      content: 'When the uhhh trivia is uhhh rain world!'
-    },
-    {
-      property: 'og:image',
-      content: 'https://seryn-rwquiz.vercel.app/triviacard.png'
-    }
-  ]
+  ogTitle: 'Rain World Trivia',
+  ogDescription: 'When the uhhh trivia is uhhh rain world!',
+  ogImage: 'https://seryn-rwquiz.vercel.app/triviacard.png',
+  twitterCard: 'summary_large_image',
 })
 
 import sundown from 'assets/audio/Sundown.mp3'
