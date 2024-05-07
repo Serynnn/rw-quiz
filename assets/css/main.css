@@ -102,6 +102,11 @@ body.splat-toggle .splat {
   }
 }
 
+.pip-rotate{
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;

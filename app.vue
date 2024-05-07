@@ -16,7 +16,10 @@ import rooftops from 'assets/audio/Rooftops.mp3'
     const frontDrops = ref("");
     const backDrops = ref("");
     const currentTrack = ref();
-    const numberOfPips = ref(12);
+    const enableTimer = ref(false);
+    const startTime = ref(60);
+    const currentTime = ref(60);
+    const numberOfPips = computed(() => startTime.value / 5);
 
     const makeItRain = () => {
       let increment = 0;
@@ -32,6 +35,7 @@ import rooftops from 'assets/audio/Rooftops.mp3'
     };
     
     const swapTrack = (track) => {
+      console.log('swapping track');
         if(currentTrack.value === track) return;
         audio.value?.pause();
         audio.value = new Audio(track);
@@ -40,6 +44,10 @@ import rooftops from 'assets/audio/Rooftops.mp3'
         audio.value.loop = true;
         audio.value.play();
     };
+
+    // rotation increment equal to 360 divided by number of pips, computed
+    const rotationIncrement = computed(() => 360 / numberOfPips.value);
+    
     
     // const mountMusic = () => {
     //   // get current route, sundown for homepage, rooftops for quiz
@@ -56,23 +64,52 @@ import rooftops from 'assets/audio/Rooftops.mp3'
     //   }, 5000);
     // });
 
-    defineExpose({ swapTrack });
+    // calculate opacity, so that as the timer ticks down, pips fade out. the first pip should start with 100%, second pip should have 200 etc, each pip ticks down by 20% oer second
+      const counting = ref<NodeJS.Timeout | null>(null);
+      // count down current time
+      const instantiateTimer = (duration) => {
+        console.log('timer started');
+        enableTimer.value = true;
+        startTime.value = duration;
+        currentTime.value = duration;
+        counting.value = setInterval(() => {
+          if(currentTime.value === 0) {
+            stopTimer();
+            return;
+          }else{
+            currentTime.value--;
+          }
+        }, 1000);
+      }
+     
+      const stopTimer = () => {
+        clearInterval(counting.value!);
+      }
+
+      const closeTimer = () => {
+        enableTimer.value = false;
+      }
+
+    defineExpose({ swapTrack, instantiateTimer, stopTimer, closeTimer});
 
     makeItRain();
 </script>
 <template>
   <head><Meta content="https://seryn-rwquiz.vercel.app/triviacard.png" /></head>
-  <div class="absolute bottom-10 left-10 border-2 border-white w-16 h-16 rounded-full flex justify-center items-center">
-      <span class="text-white font-rodondo text-4xl -mt-2 drop-shadow-sm">60</span>
-      <div class="w-24 h-4 absolute rotate-90">
-        <div class="w-24 h-4 "><img src="/images/Circle4.png" class="h-full w-auto" /></div>
-      </div>
-  </div>
+  <Transition name="fade" mode="out-in">
+    <div v-if="enableTimer" class="absolute bottom-10 left-10 border-4 border-white w-16 h-16 rounded-full flex justify-center items-center">
+        <span class="text-white font-rodondo text-4xl -mt-2 drop-shadow-sm">{{ currentTime }}</span>
+        <div class="w-24 h-2 absolute rotate-90 flex justify-center items-center">
+          <div v-for="n in numberOfPips" class="w-24 h-2 absolute pip-rotate rotate-[30deg]" :style="'--tw-rotate:' + (n * rotationIncrement) + 'deg; opacity:' + ((n * 100) - ((startTime - currentTime)*20)) +'%;'"><img src="/images/Circle20.png" class="h-full w-auto" /></div>
+          
+        </div>
+    </div>
+  </Transition>
   <main class="back-row-toggle h-lvh splat-toggle bg-gradient-to-b from-neutral-950 to-black overflow-y-auto">
     <div v-html="frontDrops" class="rain front-row z-0"></div>
     <div v-html="backDrops" class="rain back-row z-0"></div>
     <div class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh py-10">
-      <NuxtPage ref="page" @swapTrack="swapTrack" />
+      <NuxtPage ref="page" @swapTrack="swapTrack" @instantiateTimer="instantiateTimer" @stopTimer="stopTimer" @closeTimer="closeTimer" />
     </div>
   </main>
 </template>

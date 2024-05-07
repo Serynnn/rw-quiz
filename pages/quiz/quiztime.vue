@@ -14,6 +14,9 @@ const hasAnswered = ref(false);
 const correctAnswers = ref(0);
 const answers = ref([] as number[]);
 const showQuestion = ref(true);
+
+const emit = defineEmits(['instantiateTimer', 'stopTimer', 'closeTimer'])
+
 const questions = ref(
     [{
         id: 0,
@@ -53,17 +56,33 @@ const testQuestions = ref([
     },
 ]);
 
+const timeDuration = computed(() => {
+    const params = new URLSearchParams(window.location.search);
+    switch (params.get('difficulty')) {
+        case "easy":
+            return 120;
+        case "medium":
+            return 60;
+        case "hard":
+            return 30;
+        case "test":
+            return 30;
+        default:
+            return 60;
+    }
+ })
+
     const answerQuestion = (answer) => {
         if(hasAnswered.value) return;
         hasAnswered.value = true;
         questions.value[currentID.value].answer = answer;
         if(answer === questions.value[currentID.value].correctAnswer) {
             correctAnswers.value++;
+            emit('stopTimer');
             answers.value.push(answer);
-            console.log(answers.value)
         } else {
+            emit('stopTimer');
             answers.value.push(answer);
-            console.log(answers.value)
         }
     };
 
@@ -71,11 +90,13 @@ const testQuestions = ref([
         if(backDelay.value) return;
         if(currentID.value < questions.value.length - 1) {
             showQuestion.value = false;
+            emit('closeTimer');
             currentID.value++;
             hasAnswered.value = false;
             // delay show question = true by 1 second
             setTimeout(() => {
                 showQuestion.value = true;
+                emit('instantiateTimer', timeDuration.value);
             }, 500);
         } else {
             showQuestion.value = false;
@@ -119,24 +140,6 @@ const testQuestions = ref([
         }, 500);
     };
 
-    // start timer
-    const startTimer = () => {
-        timer.value = 0;
-        setInterval(() => {
-            if(hasAnswered.value) return;
-            if(timer.value < 60){
-                timer.value++;
-            } else {
-                stopTimer();
-                answerQuestion(-1);
-            }
-        }, 1000);
-    };
-
-    const stopTimer = () => {
-        timer.value = 0;
-    };
-
     onMounted(() => {
         // get current route, there is a query string for difficulty
         const params = new URLSearchParams(window.location.search);
@@ -151,6 +154,8 @@ const testQuestions = ref([
             //     questions.value = hardQuestions.value;
             //     break;
         }
+        console.log(timeDuration.value)
+        emit('instantiateTimer', timeDuration.value);
 
     });
 
