@@ -15,5 +15,5 @@ export default defineNuxtConfig({
   },
 
   ssr: true,
-  modules: ["@nuxt/ui"]
+  modules: ["@nuxt/ui", "@nuxt/image"]
 })

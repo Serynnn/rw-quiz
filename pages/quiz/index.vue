@@ -13,7 +13,7 @@
     const tickDelay = ref(false);
     const backDelay = ref(false);
     const emit = defineEmits(['swapTrack']);
-
+    
     const difficulty = ref("medium");
 
     const easySettings = {
@@ -37,6 +37,13 @@
         timePerQuestion: 30,
     };
 
+    const testSettings = {
+        title: "Test quiz",
+        description: "Full of placeholders, will be the only one that contains questions for now",
+        questions: 5,
+        timePerQuestion: 9999,
+    };
+
     const settings = computed(() => {
         switch (difficulty.value) {
             case "easy":
@@ -45,6 +52,8 @@
                 return mediumSettings;
             case "hard":
                 return hardSettings;
+            case "test":
+                return testSettings;
             default:
                 return mediumSettings;
         }
@@ -136,13 +145,16 @@
             <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Select Difficulty</h2>
             <div class="flex justify-center items-center gap-x-4 mt-6 [&_*]:select-none">
                 <div v-on:mouseenter="uiTick" @click="changeDifficulty('easy')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer" :class="difficulty == 'easy' ? 'scale-105' : 'opacity-75'">
-                    <img src="../../assets/images/Monk_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                    <img src="/images/Monk_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
                 </div>
                 <div v-on:mouseenter="uiTick" @click="changeDifficulty('medium')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer" :class="difficulty == 'medium' ? 'scale-105' : 'opacity-75'">
-                    <img src="../../assets/images/Survivor_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                    <img src="/images/Survivor_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
                 </div>
                 <div v-on:mouseenter="uiTick" @click="changeDifficulty('hard')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer" :class="difficulty == 'hard' ? 'scale-105' : 'opacity-75'">
-                    <img src="../../assets/images/Hunter.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                    <img src="/images/Hunter.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                </div>
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('test')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer" :class="difficulty == 'test' ? 'scale-105' : 'opacity-75'">
+                    <img src="/images/Nightcat.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
                 </div>
             </div>
             <div class="text-white text-center mt-4 w-fit mx-auto">
@@ -158,7 +170,7 @@
                 </div>
             </div>
             <div class="mx-auto flex justify-center w-48 items-center h-48 mt-20 relative">
-                <NuxtLink to="/quiz/quiztime" @click="uiImpact" class="w-48 h-48 rounded-full border-2 border-white p-4 cursor-pointer hover:animate-pulse hover:w-[12.5rem] hover:h-[12.5rem] transition-all duration-300 absolute [&>*]:hover:p-2 [&_*]:hover:border-white ease-out">
+                <NuxtLink :to="{ path:'/quiz/quiztime', query:{difficulty: difficulty}}" @click="uiImpact" class="w-48 h-48 rounded-full border-2 border-white p-4 cursor-pointer hover:animate-pulse hover:w-[12.5rem] hover:h-[12.5rem] transition-all duration-300 absolute [&>*]:hover:p-2 [&_*]:hover:border-white ease-out">
                     <div class="w-full h-full rounded-full border-2 border-white transition-all duration-300 ease-out">
                         <div class="border-2 border-transparent w-full h-full rounded-full transition-all duration-300 flex justify-center items-center ease-out">
                             <h3 class="text-white text-center font-rodondo text-3xl drop-shadow-sm -mt-[6px]">Start</h3>

@@ -106,9 +106,11 @@ const easyQuestions = ref([
                             <div @click="answerQuestion(index)" class="border-2 border-w w-full rounded-full absolute hover:opacity-100 hover:scale-105 hover:[&>div]:m-1 hover:[&>div]:!border-white transition-all cursor-pointer " >
                                 <div class="p-3 flex items-center transition-all border-2 rounded-full border-transparent" :class="hasAnswered && questions[currentID].correctAnswer == index ? 'bg-emerald-600/75' : questions[currentID].correctAnswer != index && questions[currentID].correctAnswer != questions[currentID].answer && hasAnswered ? 'bg-red-600/50' : 'bg-transparent'">
                                     <div class="w-12 h-12 relative">
-                                        <img v-if="questions[currentID].answer != index || hasAnswered == false" src="../../assets/images/karma/karmaRing.png" class="absolute w-12 h-12 top-0 left-0" />
-                                        <img v-else src="../../assets/images/karma/karmaRingReinforced.png" class="absolute w-12 h-12 scale-125 top-0 left-0" />
-                                        <img :src="'/_nuxt/assets/images/karma/karma'+ index +'.png'" class="absolute w-12 h-12 top-0 left-0" />
+                                        <img v-if="questions[currentID].answer != index || hasAnswered == false" src="/images/karma/karmaRing.png" class="absolute w-12 h-12 top-0 left-0" />
+                                        <img v-else src="/images/karma/karmaRingReinforced.png" class="absolute w-12 h-12 scale-125 top-0 left-0" />
+
+                                        <!-- i am SO fucking sorry to any actually good web developers looking at the horseshit i'm about to code i SWEAR i had no idea how to do it dynamically IM SORRYYYYY :(((( -->
+                                        <NuxtImg v-if="index==0" src="/images/karma/karma1.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 1" src="/images/karma/karma2.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 2" src="/images/karma/karma3.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 3" src="/images/karma/karma4.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 4" src="/images/karma/karma5.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 5" src="/images/karma/karma6.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 6" src="/images/karma/karma7.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 7" src="/images/karma/karma8.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 8" src="/images/karma/karma9.png" class="absolute w-12 h-12 top-0 left-0" />
                                     </div>
                                     <p class="text-white mx-auto font-rodondo text-3xl -mt-2">{{ option }}</p>
                                 </div>    
