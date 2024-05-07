@@ -5,8 +5,16 @@ useHead({
   title: 'Rain World Trivia',
   meta: [
     {
-      name: 'description',
+      property: 'og:title',
+      content: 'Rain World Trivia'
+    },
+    {
+      property: 'og:description',
       content: 'When the uhhh trivia is uhhh rain world!'
+    },
+    {
+      property: 'og:image',
+      content: 'https://seryn-rwquiz.vercel.app/triviacard.png'
     }
   ]
 })
