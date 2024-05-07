@@ -16,6 +16,7 @@ import rooftops from 'assets/audio/Rooftops.mp3'
     const frontDrops = ref("");
     const backDrops = ref("");
     const currentTrack = ref();
+    const numberOfPips = ref(12);
 
     const makeItRain = () => {
       let increment = 0;
@@ -61,10 +62,16 @@ import rooftops from 'assets/audio/Rooftops.mp3'
 </script>
 <template>
   <head><Meta content="https://seryn-rwquiz.vercel.app/triviacard.png" /></head>
+  <div class="absolute bottom-10 left-10 border-2 border-white w-16 h-16 rounded-full flex justify-center items-center">
+      <span class="text-white font-rodondo text-4xl -mt-2 drop-shadow-sm">60</span>
+      <div class="w-24 h-4 absolute rotate-90">
+        <div class="w-24 h-4 "><img src="/images/Circle4.png" class="h-full w-auto" /></div>
+      </div>
+  </div>
   <main class="back-row-toggle h-lvh splat-toggle bg-gradient-to-b from-neutral-950 to-black overflow-y-auto">
     <div v-html="frontDrops" class="rain front-row z-0"></div>
     <div v-html="backDrops" class="rain back-row z-0"></div>
-    <div class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh py-10 mb-40">
+    <div class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh py-10">
       <NuxtPage ref="page" @swapTrack="swapTrack" />
     </div>
   </main>
