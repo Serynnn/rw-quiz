@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
+useHead({
+  title: 'Rain World Trivia',
+  meta: [
+    {
+      name: 'description',
+      content: 'Rain World Trivia'
+    }
+  ]
+})
+
 import sundown from 'assets/audio/Sundown.mp3'
 import rooftops from 'assets/audio/Rooftops.mp3'
 
@@ -55,7 +65,7 @@ import rooftops from 'assets/audio/Rooftops.mp3'
   <main class="back-row-toggle h-lvh splat-toggle bg-gradient-to-b from-neutral-950 to-black overflow-y-auto">
     <div v-html="frontDrops" class="rain front-row z-0"></div>
     <div v-html="backDrops" class="rain back-row z-0"></div>
-    <div class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh py-10">
+    <div class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh py-10 mb-40">
       <NuxtPage ref="page" @swapTrack="swapTrack" />
     </div>
   </main>
