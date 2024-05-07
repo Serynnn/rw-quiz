@@ -62,6 +62,7 @@ import rooftops from 'assets/audio/Rooftops.mp3'
     makeItRain();
 </script>
 <template>
+  <head><Meta content="https://seryn-rwquiz.vercel.app/public/triviacard.png" /></head>
   <main class="back-row-toggle h-lvh splat-toggle bg-gradient-to-b from-neutral-950 to-black overflow-y-auto">
     <div v-html="frontDrops" class="rain front-row z-0"></div>
     <div v-html="backDrops" class="rain back-row z-0"></div>
