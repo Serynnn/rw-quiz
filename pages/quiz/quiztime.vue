@@ -31,7 +31,7 @@ const testQuestions = ref([
     {
         id: 0,
         question:'How much Karma is required to go from Industrial Complex to Chimney Canopy?',
-        image:'https://cdn.discordapp.com/attachments/694951794601885796/1237337034960535622/Chimney_Canopy_region_screen.png?ex=663b4769&is=6639f5e9&hm=6fe33f0a2782d78b42e3757a773dc04531c5563138aff2feae91e5b83fc3ced1&',
+        image:'https://static.miraheze.org/rainworldwiki/c/c8/Chimney_Canopy_region_screen.png',
         options: [
             'A',
             'B',
@@ -44,7 +44,7 @@ const testQuestions = ref([
     },{
         id: 1,
         question:'How much Karma is required to go from Industrial Complex to Chimney Canopy?',
-        image:'https://cdn.discordapp.com/attachments/694951794601885796/1237337034960535622/Chimney_Canopy_region_screen.png?ex=663b4769&is=6639f5e9&hm=6fe33f0a2782d78b42e3757a773dc04531c5563138aff2feae91e5b83fc3ced1&',
+        image:'https://static.miraheze.org/rainworldwiki/c/c8/Chimney_Canopy_region_screen.png',
         options: [
             'Test1',
             'Test2',
