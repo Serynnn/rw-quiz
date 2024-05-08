@@ -20,14 +20,14 @@
         title: "Monk",
         description: "Selection of easier questions with a longer time limit",
         questions: 10,
-        timePerQuestion: 120,
+        timePerQuestion: 60,
     };
 
     const mediumSettings = {
         title: "Survivor",
         description: "Selection of medium difficulty questions with a moderate time limit",
         questions: 15,
-        timePerQuestion: 60,
+        timePerQuestion: 45,
     };
 
     const hardSettings = {

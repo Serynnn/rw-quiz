@@ -61,8 +61,8 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
       <span class="text-gray-700/50 text-xs drop-shadow-s mx-auto"><br/>Oh yeah any questions you may see before i fully release it are likely placeholders no cheating >:)</span>
       <div class="flex flex-col items-center justify-center py-10 space-y-5">
         <div class="flex justify-center w-48 items-center h-12"><NuxtLink to="/quiz" v-on:mouseenter="uiTick" @click="uiClick" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Start</span></UButton></NuxtLink></div>
-        <div class="flex justify-center w-48 items-center h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiClick" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Settings</span></UButton></NuxtLink></div>
-        <div class="flex justify-center w-48 items-center h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiClick" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >How to Play</span></UButton></NuxtLink></div>
+        <!-- <div class="flex justify-center w-48 items-center h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiClick" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Settings</span></UButton></NuxtLink></div> -->
+        <!-- <div class="flex justify-center w-48 items-center h-12"><NuxtLink to="/howto" v-on:mouseenter="uiTick" @click="uiClick" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >How to Play</span></UButton></NuxtLink></div> -->
         <div class="flex justify-center w-48 items-center h-12"><NuxtLink to="/about" v-on:mouseenter="uiTick" @click="uiClick" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >About</span></UButton></NuxtLink></div>
         <div class="flex justify-center w-48 items-center h-12"><NuxtLink to="/credits" v-on:mouseenter="uiTick" @click="uiClick" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Credits</span></UButton></NuxtLink></div>
     </div>
