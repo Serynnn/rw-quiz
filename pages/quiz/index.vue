@@ -86,7 +86,6 @@
     };
 
     const uiPitch = () => {
-        console.log('pitch');
         if(tickDelay.value) return;
         // play between 2 sound effects, give a 1 in 2 chance of playing a sound, use placeholder url for now
         const soundEffect = Math.floor(Math.random() * 2) + 1;

@@ -72,7 +72,6 @@ import rooftops from 'assets/audio/Rooftops.mp3'
       // count down current time
       const instantiateTimer = (duration) => {
         stopTimer();
-        console.log('timer started');
         enableTimer.value = true;
         startTime.value = duration;
         currentTime.value = duration;

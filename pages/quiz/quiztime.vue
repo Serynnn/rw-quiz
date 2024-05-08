@@ -263,6 +263,7 @@ const timeDuration = computed(() => {
             calculateRank();
             showTab.value = 'results';
         }
+        scrollTo('top');
         new Audio(MetalHit).play();
         // prevent spamming of the back button
         backDelay.value = true;
@@ -393,6 +394,7 @@ const timeDuration = computed(() => {
 
     // on unmounted 
     onUnmounted(() => {
+        stopTimer();
         emit('closeTimer');
     });
 
@@ -403,7 +405,7 @@ const timeDuration = computed(() => {
 
             <div v-if="showTab == 'questions'" class="relative">
                 <!-- <div id="next" class="absolute bottom-0"></div> -->
-                <h1 class="text-white text-center font-rodondo text-6xl md:text-8xl drop-shadow-sm">Question {{ currentID+1 }}</h1>
+                <h1 id="top" class="text-white text-center font-rodondo text-6xl md:text-8xl drop-shadow-sm">Question {{ currentID+1 }}</h1>
                 <div class="w-full md:w-[40rem] mt-5">
                     <img v-if="questions[currentID].image" :src="questions[currentID].image"  class="w-auto h-full max-h-80 mx-auto border-2 border-white rounded-lg" />
                     <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">{{ questions[currentID].question }}</h2>
