@@ -16,6 +16,10 @@ import rooftops from 'assets/audio/Rooftops.mp3'
     const frontDrops = ref("");
     const backDrops = ref("");
     const currentTrack = ref();
+
+    // compute route so that it changes when the route changes
+    const route = useRoute();
+    
     const enableTimer = ref(false);
     const startTime = ref(60);
     const currentTime = ref(60);
@@ -35,7 +39,6 @@ import rooftops from 'assets/audio/Rooftops.mp3'
     };
     
     const swapTrack = (track) => {
-      console.log('swapping track');
         if(currentTrack.value === track) return;
         audio.value?.pause();
         audio.value = new Audio(track);
@@ -68,6 +71,7 @@ import rooftops from 'assets/audio/Rooftops.mp3'
       const counting = ref<NodeJS.Timeout | null>(null);
       // count down current time
       const instantiateTimer = (duration) => {
+        stopTimer();
         console.log('timer started');
         enableTimer.value = true;
         startTime.value = duration;
@@ -96,8 +100,8 @@ import rooftops from 'assets/audio/Rooftops.mp3'
 </script>
 <template>
   <head><Meta content="https://seryn-rwquiz.vercel.app/triviacard.png" /></head>
-  <Transition name="fade" mode="out-in">
-    <div v-if="enableTimer" class="absolute bottom-10 left-10 border-4 border-white w-16 h-16 rounded-full flex justify-center items-center">
+  <Transition name="fade" >
+    <div v-if="enableTimer && route.path == '/quiz/quiztime'" class="absolute bottom-10 left-10 border-4 border-white w-16 h-16 rounded-full flex justify-center items-center">
         <span class="text-white font-rodondo text-4xl -mt-2 drop-shadow-sm">{{ currentTime }}</span>
         <div class="w-24 h-2 absolute rotate-90 flex justify-center items-center">
           <div v-for="n in numberOfPips" class="w-24 h-2 absolute pip-rotate rotate-[30deg]" :style="'--tw-rotate:' + (n * rotationIncrement) + 'deg; opacity:' + ((n * 100) - ((startTime - currentTime)*20)) +'%;'"><img src="/images/Circle20.png" class="h-full w-auto" /></div>

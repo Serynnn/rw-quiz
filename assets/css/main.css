@@ -107,6 +107,20 @@ body.splat-toggle .splat {
   
 }
 
+.timerFade-enter-active {
+  transition-delay: 0.5s;
+  transition: opacity 0.5s ease;
+}
+
+.timerFade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.timerFade-enter-from,
+.timerFade-leave-to {
+  opacity: 0;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;

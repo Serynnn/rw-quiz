@@ -14,6 +14,7 @@ const hasAnswered = ref(false);
 const correctAnswers = ref(0);
 const answers = ref([] as number[]);
 const showQuestion = ref(true);
+const counting = ref<NodeJS.Timeout | null>(null);
 
 const emit = defineEmits(['instantiateTimer', 'stopTimer', 'closeTimer'])
 
@@ -78,10 +79,10 @@ const timeDuration = computed(() => {
         questions.value[currentID.value].answer = answer;
         if(answer === questions.value[currentID.value].correctAnswer) {
             correctAnswers.value++;
-            emit('stopTimer');
+            stopTimer();
             answers.value.push(answer);
         } else {
-            emit('stopTimer');
+            stopTimer();
             answers.value.push(answer);
         }
     };
@@ -96,7 +97,7 @@ const timeDuration = computed(() => {
             // delay show question = true by 1 second
             setTimeout(() => {
                 showQuestion.value = true;
-                emit('instantiateTimer', timeDuration.value);
+                instantiateTimer(timeDuration.value);
             }, 500);
         } else {
             showQuestion.value = false;
@@ -107,6 +108,25 @@ const timeDuration = computed(() => {
         setTimeout(() => {
             backDelay.value = false;
         }, 500);
+    };
+    
+    const instantiateTimer = (duration) => {
+        timer.value = duration;
+        counting.value = setInterval(() => {
+          if(timer.value === 0) {
+            answerQuestion(-1);
+            stopTimer();
+            return;
+          }else{
+            timer.value--;
+          }
+        }, 1000);
+        emit('instantiateTimer', duration);
+    };
+
+    const stopTimer = () => {
+        clearInterval(counting.value!);
+        emit('stopTimer');
     };
 
     const uiTick = () => {
@@ -154,9 +174,13 @@ const timeDuration = computed(() => {
             //     questions.value = hardQuestions.value;
             //     break;
         }
-        console.log(timeDuration.value)
-        emit('instantiateTimer', timeDuration.value);
+        instantiateTimer(timeDuration.value);
 
+    });
+
+    // on unmounted 
+    onUnmounted(() => {
+        emit('closeTimer');
     });
 
 </script>
@@ -197,13 +221,13 @@ const timeDuration = computed(() => {
                                 <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
                                 <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span class="-mt-[5px]">Next Question</span></UButton></NuxtLink></div>
                             </div>
-                            <div v-else-if="hasAnswered && questions[currentID].correctAnswer != questions[currentID].answer" class="w-full mt-6">
-                                <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Incorrect!</p>
+                            <div v-else-if="questions[currentID].answer == -1" class="w-full mt-6">
+                                <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">The rain arrived...</p>
                                 <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
                                 <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span class="-mt-[5px]">Next Question</span></UButton></NuxtLink></div>
                             </div>
-                            <div v-else-if="questions[currentID].answer == -1" class="w-full mt-6">
-                                <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">The rain arrived..</p>
+                            <div v-else-if="hasAnswered && questions[currentID].correctAnswer != questions[currentID].answer" class="w-full mt-6">
+                                <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Incorrect!</p>
                                 <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
                                 <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span class="-mt-[5px]">Next Question</span></UButton></NuxtLink></div>
                             </div>
