@@ -40,9 +40,9 @@ import MetalHit from '../assets/audio/effects/UIMetalHit.wav'
 </script>
 <template>
     <div>
-        <h1 class="text-white text-center font-rodondo text-8xl drop-shadow-sm">About uhh me i think</h1>
+        <h1 class="text-white text-center font-rodondo text-5xl md:text-8xl drop-shadow-sm">About uhh me i think</h1>
         <div class="flex flex-col justify-center items-center mt-10">
-            <div class="border-2 w-[40rem] border-white rounded-lg shadow-[0_0_8px_0] shadow-white/50 bg-neutral-900/10 backdrop-blur-md p-5">
+            <div class="border-2 w-full md:w-[40rem] border-white rounded-lg shadow-[0_0_8px_0] shadow-white/50 bg-neutral-900/10 p-5">
                 <h2 class="text-white font-rodondo text-4xl drop-shadow-sm">Who???</h2>
                 <p class="text-white font-segoue text-lg">Hiii i am a web developer who also is trying to draw. <NuxtLink to="https://twitter.com/Serynnnnn" class="font-bold underline">@Serynnnnn</NuxtLink> on twitter :))<br/> <img src="../assets/images/meifyouevencare.png" class="rounded-lg border-2 shadow-[0_0_8px_0] shadow-white/50 border-white w-auto h-40 mt-4 mx-auto" /><span class="text-gray-500 text-xs mx-auto block mt-1 w-fit">(me if you even care...)</span></p>
                 <h2 class="text-white font-rodondo text-4xl drop-shadow-sm mt-4">What???</h2>

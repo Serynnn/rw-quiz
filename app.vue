@@ -101,7 +101,7 @@ import rooftops from 'assets/audio/Rooftops.mp3'
 <template>
   <head><Meta content="https://seryn-rwquiz.vercel.app/triviacard.png" /></head>
   <Transition name="fade" >
-    <div v-if="enableTimer && route.path == '/quiz/quiztime'" class="absolute bottom-10 left-10 border-4 border-white w-16 h-16 rounded-full flex justify-center items-center">
+    <div v-if="enableTimer && route.path == '/quiz/quiztime'" class="absolute z-40 bg-black/75 bottom-10 left-10 border-4 border-white w-16 h-16 rounded-full flex justify-center items-center">
         <span class="text-white font-rodondo text-4xl align-middle drop-shadow-sm">{{ currentTime }}</span>
         <div class="w-24 h-2 absolute rotate-90 flex justify-center items-center">
           <div v-for="n in numberOfPips" class="w-24 h-2 absolute pip-rotate rotate-[30deg]" :style="'--tw-rotate:' + (n * rotationIncrement) + 'deg; opacity:' + ((n * 100) - ((startTime - currentTime)*33.333)) +'%;'"><img src="/images/Circle20.png" class="h-full w-auto" /></div>
@@ -109,10 +109,10 @@ import rooftops from 'assets/audio/Rooftops.mp3'
         </div>
     </div>
   </Transition>
-  <main class="back-row-toggle h-lvh splat-toggle bg-gradient-to-b from-neutral-950 to-black overflow-y-auto">
-    <div v-html="frontDrops" class="rain front-row z-0"></div>
-    <div v-html="backDrops" class="rain back-row z-0"></div>
-    <div class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh py-10">
+  <main class="back-row-toggle h-lvh splat-toggle bg-gradient-to-b from-neutral-950 to-black overflow-y-auto overflow-x-hidden">
+    <div v-html="frontDrops" class="rain front-row z-0 overflow-hidden"></div>
+    <div v-html="backDrops" class="rain back-row z-0 overflow-hidden"></div>
+    <div class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh py-10 px-3">
       <NuxtPage ref="page" @swapTrack="swapTrack" @instantiateTimer="instantiateTimer" @stopTimer="stopTimer" @closeTimer="closeTimer" />
     </div>
   </main>

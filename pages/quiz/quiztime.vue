@@ -4,6 +4,8 @@ import tick2 from '../assets/audio/effects/UIMetal2.wav'
 import tick3 from '../assets/audio/effects/UIMetal3.wav'
 import tick4 from '../assets/audio/effects/UIMetal4.wav'
 import MetalHit from '../assets/audio/effects/UIMetalHit.wav'
+import correctSFX from '../assets/audio/effects/Karma_capBell1.wav'
+import wrongSFX from '../assets/audio/effects/Karma_capBell2.wav'
 
 const difficulty = ref("easy");
 const timer = ref(0);
@@ -38,8 +40,104 @@ const questions = ref(
         timeTaken: 0,
     }]);
 
-const testQuestions = ref([
-    {
+
+const easyQuestions = ref([
+   {
+        id: 0,
+        question:'True or False, Blue lizards have more HP than Strawberry lizards',
+        image:'',
+        options: ['True', 'False'],
+        answer: 0,
+        correctAnswer: 1,
+        timeTaken: 0,
+   },{
+        id: 1,
+        question:'How many spear hits does it normally take for a regular vulture to fly away?',
+        image:'',
+        options: ['1', '2', '4', '5'],
+        answer: 0,
+        correctAnswer: 1,
+        timeTaken: 0,
+   },{
+        id: 2,
+        question:'What is the karma requirement to get from Chimney Canopy to sky islands?',
+        image:'',
+        options: ['2', '3', '4', '5'],
+        answer: 0,
+        correctAnswer: 0,
+        timeTaken: 0,
+   },{
+        id: 3,
+        question:'What does this Karma Symbol represent?',
+        image:'/images/karma/karma4.png',
+        options: ['Violence', 'Lust', 'Companionship', 'Survival'],
+        answer: 0,
+        correctAnswer: 3,
+        timeTaken: 0,
+   },{
+        id: 4,
+        question:'How many neurons does moon start with by default in survivors campaign?',
+        image:'',
+        options: ['4', '5', '6', '7'],
+        answer: 0,
+        correctAnswer: 1,
+        timeTaken: 0,
+   },{
+        id: 5,
+        question:'What is the name of the slugcat you play as?',
+        image:'',
+        options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
+        answer: 0,
+        correctAnswer: 0,
+        timeTaken: 0,
+   },{
+        id: 6,
+        question:'What is the name of the slugcat you play as?',
+        image:'',
+        options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
+        answer: 0,
+        correctAnswer: 0,
+        timeTaken: 0,
+   },{
+        id: 7,
+        question:'What is the name of the slugcat you play as?',
+        image:'',
+        options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
+        answer: 0,
+        correctAnswer: 0,
+        timeTaken: 0,
+   },{
+        id: 8,
+        question:'What is the name of the slugcat you play as?',
+        image:'',
+        options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
+        answer: 0,
+        correctAnswer: 0,
+        timeTaken: 0,
+   }
+]);
+
+const mediumQuestions = ref([{
+    id: 0,
+    question:'What is the name of the slugcat you play as?',
+    image:'',
+    options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
+    answer: 0,
+    correctAnswer: 0,
+    timeTaken: 0,
+    },{
+        id: 1,
+        question:'What is the name of the slugcat you play as?',
+        image:'',
+        options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
+        answer: 0,
+        correctAnswer: 0,
+        timeTaken: 0,
+    },
+        
+])
+
+const testQuestions = ref([{
         id: 0,
         question:'What is your favourite slugcat?',
         image:'https://static.miraheze.org/rainworldwiki/c/c8/Chimney_Canopy_region_screen.png',
@@ -134,12 +232,18 @@ const timeDuration = computed(() => {
         questions.value[currentID.value].timeTaken = timeDuration.value - timer.value;
         if(answer === questions.value[currentID.value].correctAnswer) {
             correctAnswers.value++;
+            uiCorrect();
             stopTimer();
             answers.value.push(answer);
         } else {
             stopTimer();
+            uiWrong();
             answers.value.push(answer);
         }
+        // setTimeout(() => {
+        //     scrollTo('next');
+        // }, 100);
+        
     };
 
     const nextQuestion = () => {
@@ -251,6 +355,24 @@ const timeDuration = computed(() => {
         }, 500);
     };
 
+    const uiCorrect = () => {
+        new Audio(correctSFX).play();
+    };
+
+    const uiWrong = () => {
+        new Audio(wrongSFX).play();
+    };
+
+    function scrollTo(id: string) {
+        let el = document.getElementById(id);
+        
+        if(el){
+            
+            el.scrollIntoView({ behavior: 'smooth' }) 
+        }
+        
+    }
+
     onMounted(() => {
         // get current route, there is a query string for difficulty
         const params = new URLSearchParams(window.location.search);
@@ -280,16 +402,16 @@ const timeDuration = computed(() => {
         <Transition tag="div" class="w-full flex flex-col items-center justify-center" name="fade" mode="out-in">
 
             <div v-if="showTab == 'questions'" class="relative">
-                
-                <h1 class="text-white text-center font-rodondo text-8xl drop-shadow-sm">Question {{ currentID+1 }}</h1>
-                <div class="w-[40rem] mt-5">
+                <!-- <div id="next" class="absolute bottom-0"></div> -->
+                <h1 class="text-white text-center font-rodondo text-6xl md:text-8xl drop-shadow-sm">Question {{ currentID+1 }}</h1>
+                <div class="w-full md:w-[40rem] mt-5">
                     <img v-if="questions[currentID].image" :src="questions[currentID].image"  class="w-auto h-full max-h-80 mx-auto border-2 border-white rounded-lg" />
                     <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">{{ questions[currentID].question }}</h2>
                     <div class="flex flex-wrap justify-center">
 
-                        <div v-for="(option, index) in questions[currentID].options" :key="index" class="basis-1/2 px-3 mt-6">
+                        <div v-for="(option, index) in questions[currentID].options" :key="index" class="basis-full md:basis-1/2 px-3 mt-6">
                             <div class="h-20 w-full relative flex justify-center items-center">
-                                <div @click="answerQuestion(index)" class="border-2 border-w w-full rounded-full absolute hover:opacity-100 hover:scale-105 hover:[&>div]:m-1 hover:[&>div]:!border-white transition-all cursor-pointer " >
+                                <div @mouseenter="uiTick" @click="answerQuestion(index)" class="border-2 border-w w-full rounded-full absolute hover:opacity-100 hover:scale-105 hover:[&>div]:m-1 hover:[&>div]:!border-white transition-all cursor-pointer " >
                                     <div class="p-3 flex items-center transition-all border-2 rounded-full border-transparent" :class="hasAnswered && questions[currentID].correctAnswer == index ? 'bg-emerald-600/75' : questions[currentID].correctAnswer != index && questions[currentID].correctAnswer != questions[currentID].answer && hasAnswered ? 'bg-red-600/50' : 'bg-transparent'">
                                         <div class="w-12 h-12 relative">
                                             <img v-if="questions[currentID].answer != index || hasAnswered == false" src="/images/karma/karmaRing.png" class="absolute w-12 h-12 top-0 left-0" />
@@ -304,32 +426,34 @@ const timeDuration = computed(() => {
                             </div>
                         </div>
                         
-                        <Transition name="fade">
-                            <div v-if="hasAnswered && questions[currentID].correctAnswer == questions[currentID].answer" class="w-full mt-6">
-                                <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Correct!</p>
-                                <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
-                                <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Next Question</span></UButton></NuxtLink></div>
-                            </div>
-                            <div v-else-if="questions[currentID].answer == -1" class="w-full mt-6">
-                                <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">The rain arrived...</p>
-                                <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
-                                <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Next Question</span></UButton></NuxtLink></div>
-                            </div>
-                            <div v-else-if="hasAnswered && questions[currentID].correctAnswer != questions[currentID].answer" class="w-full mt-6">
-                                <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Incorrect!</p>
-                                <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
-                                <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Next Question</span></UButton></NuxtLink></div>
-                            </div>
-                            <div v-else>
+                        <div class="w-full min-h-80 flex mt-10">
+                            <Transition name="fade">
+                                <div v-if="hasAnswered && questions[currentID].correctAnswer == questions[currentID].answer" class="w-full">
+                                    <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Correct!</p>
+                                    <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
+                                    <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Next Question</span></UButton></NuxtLink></div>
+                                </div>
+                                <div v-else-if="questions[currentID].answer == -1" class="w-full">
+                                    <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">The rain arrived...</p>
+                                    <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
+                                    <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Next Question</span></UButton></NuxtLink></div>
+                                </div>
+                                <div v-else-if="hasAnswered && questions[currentID].correctAnswer != questions[currentID].answer" class="w-full">
+                                    <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Incorrect!</p>
+                                    <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
+                                    <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Next Question</span></UButton></NuxtLink></div>
+                                </div>
+                                <div v-else>
 
-                            </div>
-                        </Transition>
+                                </div>
+                            </Transition>
+                        </div>
                     </div>
                 </div>
             </div>
             <div v-else-if="showTab == 'results'">
                 <div class="w-full flex flex-wrap justify-center items-center">
-                    <div class="basis-1/2 flex flex-col items-center p-10">
+                    <div class="basis-full md:basis-1/2 flex flex-col items-center p-10">
                         <h1 class="text-white text-center font-rodondo text-8xl drop-shadow-sm">Results</h1>
                         <div class="flex justify-between w-60">
                             <p class="text-white text-left text-lg drop-shadow-sm">Difficulty:</p>
@@ -372,12 +496,12 @@ const timeDuration = computed(() => {
                         <!-- back button -->
                         <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="uiBack" to="/" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Back</span></UButton></NuxtLink></div>
                     </div>
-                    <div class="basis-1/2 scale-75">
+                    <div class="basis-full md:basis-1/2 scale-90 md:scale-75">
                         <transition tag="div" name="fade" mode="out-in" class="sticky">
                             <div v-if="showResults">
                                 <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">{{ questions[selectedQuestion].question }}</h2>
                                 <div class="flex flex-wrap">
-                                    <div v-for="(option, index) in questions[selectedQuestion].options" :key="index" class="basis-1/2 px-3 mt-6">
+                                    <div v-for="(option, index) in questions[selectedQuestion].options" :key="index" class="basis-full md:basis-1/2 px-3 mt-6">
                                         <div class="h-20 w-full relative flex justify-center items-center">
                                             <div @click="answerQuestion(index)" class="border-2 border-w w-full rounded-full absolute hover:opacity-100 hover:scale-105 hover:[&>div]:m-1 hover:[&>div]:!border-white transition-all cursor-pointer " >
                                                 <div class="p-3 flex items-center transition-all border-2 rounded-full border-transparent" :class="hasAnswered && questions[selectedQuestion].correctAnswer == index ? 'bg-emerald-600/75' : questions[selectedQuestion].correctAnswer != index && questions[selectedQuestion].correctAnswer != questions[selectedQuestion].answer && hasAnswered ? 'bg-red-600/50' : 'bg-transparent'">

@@ -40,13 +40,13 @@ import MetalHit from '../assets/audio/effects/UIMetalHit.wav'
 </script>
 <template>
     <div>
-        <h1 class="text-white text-center font-rodondo text-8xl drop-shadow-sm">Credits</h1>
-        <div class="flex flex-col justify-center items-center mt-10">
+        <h1 class="text-white text-center font-rodondo text-6xl md:text-8xl drop-shadow-sm">Credits</h1>
+        <div class="flex flex-col justify-center items-center text-center mt-10">
             <h2 class="text-white font-rodondo text-4xl drop-shadow-sm">Thank you to the following:</h2>
-            <p class="text-white text-lg"><NuxtLink to="https://twitter.com/RivuletSlugcat" class="font-semibold underline">@RivuletSlugcat</NuxtLink> for helping with questions</p>
-            <p class="text-white text-lg"><NuxtLink to="https://twitter.com/rredjk7" class="font-semibold underline">@rredjk7</NuxtLink> for helping with questions</p>
-            <p class="text-white text-lg">My irl friend for helping me out with various things despite knowing i will never credit them <NuxtLink to="https://twitter.com/EggsLeggs_" class="text-sm text-gray-500">jk</NuxtLink></p>
-            <p class="text-white text-lg">The awesome people at <NuxtLink to="https://discord.gg/6TX2Vm9V5d" class="font-semibold underline">The Sanctuary</NuxtLink> for putting up with me posting my progress</p>
+            <p class="text-white text-lg mt-2"><NuxtLink to="https://twitter.com/RivuletSlugcat" class="font-semibold underline">@RivuletSlugcat</NuxtLink> for helping with questions</p>
+            <p class="text-white text-lg mt-2"><NuxtLink to="https://twitter.com/rredjk7" class="font-semibold underline">@rredjk7</NuxtLink> for helping with questions</p>
+            <p class="text-white text-lg mt-2">My irl friend for helping me out with various things despite knowing i will never credit them <NuxtLink to="https://twitter.com/EggsLeggs_" class="text-sm text-gray-500">jk</NuxtLink></p>
+            <p class="text-white text-lg mt-2">The awesome people at the <NuxtLink to="https://discord.gg/6TX2Vm9V5d" class="font-semibold underline">The Sanctuary</NuxtLink> discord for putting up with me posting about my development</p>
 
             <div class="flex justify-center relative w-48 items-center mt-6 h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiBack" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Back</span></UButton></NuxtLink></div>
         </div>

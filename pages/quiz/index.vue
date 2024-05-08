@@ -140,20 +140,20 @@
 <template>
     <div class="relative">
         <h1 class="text-white text-center font-rodondo text-8xl drop-shadow-sm">Quiz</h1>
-        <div class="flex justify-center absolute w-28 items-center top-8 left-0 h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiBack" class="!w-28 hover:!w-[7.5rem] rw-btn-wrapper "><UButton color="RW" class="rw-btn !w-28" ><span >Back</span></UButton></NuxtLink></div>
-        <div class="w-[40rem] mt-20">
+        <div class="flex mx-auto justify-center md:absolute w-28 items-center top-6 left-0 h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiBack" class="!w-28 hover:!w-[7.5rem] rw-btn-wrapper "><UButton color="RW" class="rw-btn !w-28" ><span >Back</span></UButton></NuxtLink></div>
+        <div class="w-full md:w-[40rem] mt-20">
             <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Select Difficulty</h2>
-            <div class="flex justify-center items-center gap-x-4 mt-6 [&_*]:select-none">
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('easy')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer" :class="difficulty == 'easy' ? 'scale-105' : 'opacity-75'">
+            <div class="flex flex-wrap justify-center items-center gap-x-4 mt-3 [&_*]:select-none">
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('easy')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer mt-3" :class="difficulty == 'easy' ? 'scale-105' : 'opacity-75'">
                     <img src="/images/Monk_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
                 </div>
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('medium')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer" :class="difficulty == 'medium' ? 'scale-105' : 'opacity-75'">
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('medium')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer mt-3" :class="difficulty == 'medium' ? 'scale-105' : 'opacity-75'">
                     <img src="/images/Survivor_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
                 </div>
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('hard')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer" :class="difficulty == 'hard' ? 'scale-105' : 'opacity-75'">
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('hard')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer mt-3" :class="difficulty == 'hard' ? 'scale-105' : 'opacity-75'">
                     <img src="/images/Hunter.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
                 </div>
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('test')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer" :class="difficulty == 'test' ? 'scale-105' : 'opacity-75'">
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('test')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer mt-3" :class="difficulty == 'test' ? 'scale-105' : 'opacity-75'">
                     <img src="/images/Nightcat.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
                 </div>
             </div>
@@ -163,7 +163,7 @@
                     <span class="text-md text-gray-200">{{ settings.description }}</span>
                 </div>
                 <!-- line break -->
-                <div class="border-b-2 border-white my-4 border-dashed w-full opacity-50" ></div>
+                <div class="w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent my-8 rounded-full"></div>
                 <div class="text-lg px-4">
                     <p><span class="font-bold">Questions:</span> {{ settings.questions }}</p>
                     <p><span class="font-bold">Time Limit:</span> {{ settings.timePerQuestion }} seconds</p>
