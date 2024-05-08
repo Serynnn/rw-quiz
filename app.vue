@@ -102,7 +102,7 @@ import rooftops from 'assets/audio/Rooftops.mp3'
   <head><Meta content="https://seryn-rwquiz.vercel.app/triviacard.png" /></head>
   <Transition name="fade" >
     <div v-if="enableTimer && route.path == '/quiz/quiztime'" class="absolute bottom-10 left-10 border-4 border-white w-16 h-16 rounded-full flex justify-center items-center">
-        <span class="text-white font-rodondo text-4xl -mt-2 drop-shadow-sm">{{ currentTime }}</span>
+        <span class="text-white font-rodondo text-4xl align-middle drop-shadow-sm">{{ currentTime }}</span>
         <div class="w-24 h-2 absolute rotate-90 flex justify-center items-center">
           <div v-for="n in numberOfPips" class="w-24 h-2 absolute pip-rotate rotate-[30deg]" :style="'--tw-rotate:' + (n * rotationIncrement) + 'deg; opacity:' + ((n * 100) - ((startTime - currentTime)*20)) +'%;'"><img src="/images/Circle20.png" class="h-full w-auto" /></div>
           

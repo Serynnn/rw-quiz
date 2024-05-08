@@ -54,7 +54,7 @@ import MetalHit from '../assets/audio/effects/UIMetalHit.wav'
                 <h2 class="text-white font-rodondo text-4xl drop-shadow-sm mt-4">When???</h2>
                 <p class="text-white font-segoue text-lg">Uhh idk like may 2024?</p>
             </div>
-            <div class="flex justify-center relative w-48 items-center mt-6 h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiBack" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span class="-mt-[5px]">Back</span></UButton></NuxtLink></div>
+            <div class="flex justify-center relative w-48 items-center mt-6 h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiBack" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Back</span></UButton></NuxtLink></div>
         </div>
     </div>
 </template>

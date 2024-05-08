@@ -13,7 +13,7 @@ const currentID = ref(0);
 const hasAnswered = ref(false);
 const correctAnswers = ref(0);
 const answers = ref([] as number[]);
-const showQuestion = ref(true);
+const showTab = ref('questions');
 const counting = ref<NodeJS.Timeout | null>(null);
 
 const emit = defineEmits(['instantiateTimer', 'stopTimer', 'closeTimer'])
@@ -90,17 +90,17 @@ const timeDuration = computed(() => {
     const nextQuestion = () => {
         if(backDelay.value) return;
         if(currentID.value < questions.value.length - 1) {
-            showQuestion.value = false;
+            showTab.value = '';
             emit('closeTimer');
             currentID.value++;
             hasAnswered.value = false;
             // delay show question = true by 1 second
             setTimeout(() => {
-                showQuestion.value = true;
+                showTab.value = 'questions';
                 instantiateTimer(timeDuration.value);
             }, 500);
         } else {
-            showQuestion.value = false;
+            showTab.value = 'results';
         }
         new Audio(MetalHit).play();
         // prevent spamming of the back button
@@ -190,7 +190,7 @@ const timeDuration = computed(() => {
 
         <Transition tag="div" name="fade">
 
-            <div v-if="showQuestion" class="relative">
+            <div v-if="showTab == 'questions'" class="relative">
                 
                 <h1 class="text-white text-center font-rodondo text-8xl drop-shadow-sm">Question {{ currentID+1 }}</h1>
                 <div class="w-[40rem] mt-5">
@@ -209,7 +209,7 @@ const timeDuration = computed(() => {
                                             <!-- i am SO fucking sorry to any actually good web developers looking at the horseshit i'm about to code i SWEAR i had no idea how to do it dynamically IM SORRYYYYY :(((( -->
                                             <NuxtImg v-if="index==0" src="/images/karma/karma0.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 1" src="/images/karma/karma1.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 2" src="/images/karma/karma2.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 3" src="/images/karma/karma3.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 4" src="/images/karma/karma4.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 5" src="/images/karma/karma5.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 6" src="/images/karma/karma6.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 7" src="/images/karma/karma7.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 8" src="/images/karma/karma8.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 9" src="/images/karma/karma9.png" class="absolute w-12 h-12 top-0 left-0" />
                                         </div>
-                                        <p class="text-white mx-auto font-rodondo text-3xl -mt-2">{{ option }}</p>
+                                        <p class="text-white mx-auto font-rodondo text-3xl">{{ option }}</p>
                                     </div>    
                                 </div>
                             </div>
@@ -219,17 +219,17 @@ const timeDuration = computed(() => {
                             <div v-if="hasAnswered && questions[currentID].correctAnswer == questions[currentID].answer" class="w-full mt-6">
                                 <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Correct!</p>
                                 <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
-                                <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span class="-mt-[5px]">Next Question</span></UButton></NuxtLink></div>
+                                <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Next Question</span></UButton></NuxtLink></div>
                             </div>
                             <div v-else-if="questions[currentID].answer == -1" class="w-full mt-6">
                                 <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">The rain arrived...</p>
                                 <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
-                                <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span class="-mt-[5px]">Next Question</span></UButton></NuxtLink></div>
+                                <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Next Question</span></UButton></NuxtLink></div>
                             </div>
                             <div v-else-if="hasAnswered && questions[currentID].correctAnswer != questions[currentID].answer" class="w-full mt-6">
                                 <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Incorrect!</p>
                                 <p class="text-white font-semibold text-center text-lg drop-shadow-sm">You have gotten {{ correctAnswers }}/{{ answers.length }} correct</p>
-                                <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span class="-mt-[5px]">Next Question</span></UButton></NuxtLink></div>
+                                <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="nextQuestion" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Next Question</span></UButton></NuxtLink></div>
                             </div>
                             <div v-else>
 
@@ -237,6 +237,9 @@ const timeDuration = computed(() => {
                         </Transition>
                     </div>
                 </div>
+            </div>
+            <div v-else-if="showTab == 'results'">
+
             </div>
         
         </Transition>

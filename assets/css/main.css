@@ -135,5 +135,6 @@ body.splat-toggle .splat {
     @font-face {
       font-family: 'Rodondo';
       src: url(~/fonts/Rodondo.otf) format('opentype');
+      ascent-override: 70%;
     }
   }

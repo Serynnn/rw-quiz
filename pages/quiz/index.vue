@@ -140,7 +140,7 @@
 <template>
     <div class="relative">
         <h1 class="text-white text-center font-rodondo text-8xl drop-shadow-sm">Quiz</h1>
-        <div class="flex justify-center absolute w-28 items-center top-8 left-0 h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiBack" class="!w-28 hover:!w-[7.5rem] rw-btn-wrapper "><UButton color="RW" class="rw-btn !w-28" ><span class="-mt-[5px]">Back</span></UButton></NuxtLink></div>
+        <div class="flex justify-center absolute w-28 items-center top-8 left-0 h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiBack" class="!w-28 hover:!w-[7.5rem] rw-btn-wrapper "><UButton color="RW" class="rw-btn !w-28" ><span >Back</span></UButton></NuxtLink></div>
         <div class="w-[40rem] mt-20">
             <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Select Difficulty</h2>
             <div class="flex justify-center items-center gap-x-4 mt-6 [&_*]:select-none">
@@ -173,7 +173,7 @@
                 <NuxtLink :to="{ path:'/quiz/quiztime', query:{difficulty: difficulty}}" @click="uiImpact" class="w-48 h-48 rounded-full border-2 border-white p-4 cursor-pointer hover:animate-pulse hover:w-[12.5rem] hover:h-[12.5rem] transition-all duration-300 absolute [&>*]:hover:p-2 [&_*]:hover:border-white ease-out">
                     <div class="w-full h-full rounded-full border-2 border-white transition-all duration-300 ease-out">
                         <div class="border-2 border-transparent w-full h-full rounded-full transition-all duration-300 flex justify-center items-center ease-out">
-                            <h3 class="text-white text-center font-rodondo text-3xl drop-shadow-sm -mt-[6px]">Start</h3>
+                            <h3 class="text-white text-center font-rodondo text-3xl drop-shadow-sm">Start</h3>
                         </div>
                     </div>
                 </NuxtLink>
