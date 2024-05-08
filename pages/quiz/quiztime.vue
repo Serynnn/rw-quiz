@@ -428,7 +428,7 @@ const timeDuration = computed(() => {
                             </div>
                         </div>
                         
-                        <div class="w-full min-h-80 flex mt-10">
+                        <div class="w-full min-h-64 flex mt-10">
                             <Transition name="fade">
                                 <div v-if="hasAnswered && questions[currentID].correctAnswer == questions[currentID].answer" class="w-full">
                                     <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Correct!</p>
@@ -503,7 +503,7 @@ const timeDuration = computed(() => {
                             <div v-if="showResults">
                                 <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">{{ questions[selectedQuestion].question }}</h2>
                                 <div class="flex flex-wrap">
-                                    <div v-for="(option, index) in questions[selectedQuestion].options" :key="index" class="basis-full md:basis-1/2 px-3 mt-6">
+                                    <div v-for="(option, index) in questions[selectedQuestion].options" :key="index" class="basis-full lg:basis-1/2 px-3 mt-6">
                                         <div class="h-20 w-full relative flex justify-center items-center">
                                             <div @click="answerQuestion(index)" class="border-2 border-w w-full rounded-full absolute hover:opacity-100 hover:scale-105 hover:[&>div]:m-1 hover:[&>div]:!border-white transition-all cursor-pointer " >
                                                 <div class="p-3 flex items-center transition-all border-2 rounded-full border-transparent" :class="hasAnswered && questions[selectedQuestion].correctAnswer == index ? 'bg-emerald-600/75' : questions[selectedQuestion].correctAnswer != index && questions[selectedQuestion].correctAnswer != questions[selectedQuestion].answer && hasAnswered ? 'bg-red-600/50' : 'bg-transparent'">
