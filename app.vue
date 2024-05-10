@@ -29,6 +29,7 @@ import tick4 from '../assets/audio/effects/UIMetal4.wav'
 import UIArp from '../assets/audio/effects/UIArp.wav'
 
     const audio = ref<HTMLAudioElement>();
+    const arenaLooper = ref<NodeJS.Timeout | null>(null);
     const frontDrops = ref("");
     const backDrops = ref("");
     const currentTrack = ref();
@@ -118,7 +119,7 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
       setTimeout(() => {
         showSongName.value = false;
       }, 5000);
-      setTimeout(() => {
+      arenaLooper.value = setTimeout(() => {
         arenaTrackQueue();
       }, songQueue.value[trackIndex.value].duration * 1000);
     }
@@ -133,6 +134,7 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
         if(track === sundown) {
           audio.value.loop = true;
           audio.value.currentTime = 15;
+          clearInterval(arenaLooper.value!);
         } else {
           audio.value.loop = false;
         }
@@ -245,7 +247,7 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
   <head><Meta content="https://seryn-rwquiz.vercel.app/triviacard.png" /></head>
   <Transition name="song">
     <div v-show="showSongName" class="bottom-0 left-0 absolute h-12 w-full bg-black/75">
-      <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">{{ songQueue[trackIndex].name }}</h2>
+      <h2 class="text-white font-rodondo text-4xl drop-shadow-sm">{{ songQueue[trackIndex].name }}</h2>
     </div>
   </Transition>
   <Transition name="fade" >
