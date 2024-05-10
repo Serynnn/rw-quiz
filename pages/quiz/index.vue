@@ -143,17 +143,25 @@
         <div class="w-full md:w-[40rem] mt-20">
             <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Select Difficulty</h2>
             <div class="flex flex-wrap justify-center items-center gap-x-4 mt-3 [&_*]:select-none">
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('easy')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer mt-3" :class="difficulty == 'easy' ? 'scale-105' : 'opacity-75'">
-                    <img src="/images/Monk_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('easy')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'easy' ? 'scale-105' : 'opacity-75'">
+                    <div class="p-3 border-2 border-transparent transition-all ease-out rounded-xl">
+                        <img src="/images/Monk_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                    </div>
                 </div>
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('medium')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer mt-3" :class="difficulty == 'medium' ? 'scale-105' : 'opacity-75'">
-                    <img src="/images/Survivor_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('medium')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'medium' ? 'scale-105' : 'opacity-75'">
+                    <div class="p-3 border-2 border-transparent transition-all ease-out rounded-xl">
+                        <img src="/images/Survivor_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                    </div>    
                 </div>
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('hard')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer mt-3" :class="difficulty == 'hard' ? 'scale-105' : 'opacity-75'">
-                    <img src="/images/Hunter.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('hard')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'hard' ? 'scale-105' : 'opacity-75'">
+                    <div class="p-3 border-2 border-transparent transition-all ease-out rounded-xl">
+                        <img src="/images/Hunter.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                    </div>
                 </div>
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('test')" class="border-2 border-w p-3 rounded-xl hover:opacity-100 hover:scale-105 transition-all cursor-pointer mt-3" :class="difficulty == 'test' ? 'scale-105' : 'opacity-75'">
-                    <img src="/images/Nightcat.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('test')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'test' ? 'scale-105' : 'opacity-75'">
+                    <div class="p-3 border-2 border-transparent transition-all ease-out rounded-xl">
+                        <img src="/images/Nightcat.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
+                    </div>
                 </div>
             </div>
             <div class="text-white text-center mt-4 w-fit mx-auto">

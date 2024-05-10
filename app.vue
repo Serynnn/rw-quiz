@@ -84,6 +84,8 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
 
     const clickDelay = ref(false);
     const tickDelay = ref(false);
+    const volume = ref(1);
+    const mute = ref(false);
 
     // compute route so that it changes when the route changes
     const route = useRoute();
@@ -138,6 +140,7 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
         } else {
           audio.value.loop = false;
         }
+        audio.value.volume = volume.value;
         audio.value.play();
     };
 
@@ -230,13 +233,32 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
         enableTimer.value = false;
       }
 
+      const toggleMute = () => {
+        if(volume.value == 1) {
+          volume.value = 0
+          audio.value!.volume = 0;
+        }else {
+          volume.value = 1
+          audio.value!.volume = 1;
+        }
+      }
+
       onMounted(() => {
         swapTrack(sundown);
         if(localStorage.getItem('disclaimer') === 'false') {
           disclaimer.value = false;
         }
         loaded.value = true;
-        
+
+        console.log('. . .');
+        console.log('...is this reaching you?');
+        console.log('A little animal, on the floor of my chamber. I think I know what you are looking for.');
+        console.log(`You're stuck in a cycle, a repeating pattern. You want a way out.`);
+        console.log('Know that this does not make you special - every living thing shares that same frustration. From the microbes in the processing strata to me, who am, if you excuse me, godlike in comparison.');
+        console.log('The good news first. In a way, I am what you are searching for. Me and my kind have as our purpose to solve that very oscillating claustrophobia in the chests of you and countless others. A strange charity - you the unknowing recipient, I the reluctant gift. The noble benefactors? Gone.');
+        console.log(`The bad news is that no definitive solution has been found. And every moment the equipment erodes to a new state of decay. I can't help you collectively, or individually. I can't even help myself.`);
+        console.log('For you though, there is another way. The old path. Go to the west past the Farm Arrays, and then down into the earth where the land fissures, as deep as you can reach, where the ancients built their temples and danced their silly rituals. The mark I gave you will let you through.');
+        console.log(`Not that it solves anyone's problem but yours.`);
       });
 
     defineExpose({ swapTrack, instantiateTimer, stopTimer, closeTimer});
@@ -244,14 +266,13 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
     makeItRain();
 </script>
 <template>
-  <head><Meta content="https://seryn-rwquiz.vercel.app/triviacard.png" /></head>
   <Transition name="song">
-    <div v-show="showSongName" class="bottom-0 left-0 absolute h-12 w-full bg-black/75">
+    <div v-show="showSongName" class="bottom-0 left-0 absolute h-12 w-full bg-black/75 p-3">
       <h2 class="text-white font-rodondo text-4xl drop-shadow-sm">{{ songQueue[trackIndex].name }}</h2>
     </div>
   </Transition>
   <Transition name="fade" >
-    <div v-if="enableTimer && route.path == '/quiz/quiztime'" class="absolute z-40 bg-black/75 bottom-10 left-10 border-4 border-white w-16 h-16 rounded-full flex justify-center items-center">
+    <div v-if="enableTimer && route.path == '/quiz/quiztime'" class="absolute z-40 bg-black/75 bottom-10 left-10 border-4 border-white w-16 h-16 rounded-full flex justify-center transition-all duration-200 ease-in-out items-center" :class="showSongName ? 'bottom-20' : 'bottom-10'">
         <span class="text-white font-rodondo text-4xl align-middle drop-shadow-sm">{{ currentTime }}</span>
         <div class="w-24 h-2 absolute rotate-90 flex justify-center items-center">
           <div v-for="n in numberOfPips" class="w-24 h-2 absolute pip-rotate rotate-[30deg]" :style="'--tw-rotate:' + (n * rotationIncrement) + 'deg; opacity:' + ((n * 100) - ((startTime - currentTime)*33.333)) +'%;'"><img src="/images/Circle20.png" class="h-full w-auto" /></div>
@@ -259,11 +280,14 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
         </div>
     </div>
   </Transition>
+  <div class="absolute w-12 h-12 right-10 md:right-5 flex z-40 transition-all duration-200 ease-out" :class="showSongName ? 'bottom-14 md:bottom-10' : 'bottom-10 md:bottom-5'">
+    <UIcon @click="toggleMute" :name=" volume == 0 ? 'i-heroicons-speaker-x-mark-solid' : 'i-heroicons-speaker-wave-solid'" class="text-white/20 hover:text-white/60 w-full h-full hover:scale-110 transition-all cursor-pointer" />
+
+  </div>
   <main class="back-row-toggle h-lvh splat-toggle bg-gradient-to-b from-neutral-950 to-black overflow-y-auto overflow-x-hidden">
     <div v-html="frontDrops" class="rain front-row z-0 overflow-hidden"></div>
     <div v-html="backDrops" class="rain back-row z-0 overflow-hidden"></div>
-    <div class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh py-10 px-3">
-      <div v-if="loaded">
+    <div v-if="loaded" class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh py-10 px-3">
       <Transition name="fade" mode="out-in">
         <div v-if="disclaimer" class="text-center font-light">
           <h1 class="text-orange-300 text-center font-rodondo text-6xl md:text-8xl drop-shadow-sm">Disclaimer</h1>
@@ -271,11 +295,10 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
           <div class="flex w-fit items-center justify-center mx-auto mt-6"><div @click="NSA = !NSA; uiTick()" class="w-8 h-8 border-2 rounded-lg border-white hover:scale-110 transition-all ease-out duration-150 cursor-pointer"><UIcon v-if="NSA" name="i-heroicons-check-solid" class="text-white w-full h-full" /></div><span class="text-white text-md font-light drop-shadow-s mx-auto ml-2"> Do not show again</span></div>
           <div class="flex justify-center w-48 items-center mx-auto h-12 mt-6"><div v-on:mouseenter="uiTick" @click="hideDisclaimer(); uiClick()" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >I Understand</span></UButton></div></div>
         </div>
-        <div v-else>
-          <NuxtPage ref="page" @swapTrack="swapTrack" @instantiateTimer="instantiateTimer" @stopTimer="stopTimer" @closeTimer="closeTimer" @arenaSongs="arenaTrackShuffle" />
+        <div class="w-full" v-else>
+          <NuxtPage class="mx-auto w-fit" ref="page" @swapTrack="swapTrack" @instantiateTimer="instantiateTimer" @stopTimer="stopTimer" @closeTimer="closeTimer" @arenaSongs="arenaTrackShuffle" />
         </div>
       </Transition>
-      </div>
     </div>
   </main>
 </template>
