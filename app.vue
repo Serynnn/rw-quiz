@@ -130,8 +130,12 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
         audio.value?.pause();
         audio.value = new Audio(track);
         currentTrack.value = track;
-        if(track === sundown) audio.value.currentTime = 15;
-        audio.value.loop = true;
+        if(track === sundown) {
+          audio.value.loop = true;
+          audio.value.currentTime = 15;
+        } else {
+          audio.value.loop = false;
+        }
         audio.value.play();
     };
 
@@ -240,7 +244,9 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
 <template>
   <head><Meta content="https://seryn-rwquiz.vercel.app/triviacard.png" /></head>
   <Transition name="song">
-    <h2 v-show="showSongName" class="text-white text-center font-rodondo text-4xl absolute bottom-0 left-0 drop-shadow-sm">{{ songQueue[trackIndex].name }}</h2>
+    <div v-show="showSongName" class="bottom-0 left-0 absolute h-12 w-full bg-black/75">
+      <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">{{ songQueue[trackIndex].name }}</h2>
+    </div>
   </Transition>
   <Transition name="fade" >
     <div v-if="enableTimer && route.path == '/quiz/quiztime'" class="absolute z-40 bg-black/75 bottom-10 left-10 border-4 border-white w-16 h-16 rounded-full flex justify-center items-center">
