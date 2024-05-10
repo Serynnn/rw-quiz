@@ -12,7 +12,7 @@
 
     const tickDelay = ref(false);
     const backDelay = ref(false);
-    const emit = defineEmits(['swapTrack']);
+    const emit = defineEmits(['arenaSongs']);
     
     const difficulty = ref("medium");
 
@@ -132,7 +132,7 @@
 
     onMounted(() => {
       // delay by 5 seconds  
-      emit('swapTrack', rooftops);
+      emit('arenaSongs');
     });
     
 </script>
@@ -168,8 +168,8 @@
                     <p><span class="font-bold">Time Limit:</span> {{ settings.timePerQuestion }} seconds</p>
                 </div>
             </div>
-            <div class="mx-auto flex justify-center w-48 items-center h-48 mt-20 relative">
-                <NuxtLink :to="{ path:'/quiz/quiztime', query:{difficulty: difficulty}}" @click="uiImpact" class="w-48 h-48 rounded-full border-2 border-white p-4 cursor-pointer hover:animate-pulse hover:w-[12.5rem] hover:h-[12.5rem] transition-all duration-300 absolute [&>*]:hover:p-2 [&_*]:hover:border-white ease-out">
+            <div class="mx-auto flex justify-center w-48 items-center h-48 mt-10 relative">
+                <NuxtLink :to="{ path:'/quiz/quiztime', query:{difficulty: difficulty}}" @click="uiImpact" class="w-48 h-48 rounded-full border-2 border-white p-4 cursor-pointer hover:[&>*]:[&>*]:animate-border-pulse-slow hover:w-[12.5rem] hover:h-[12.5rem] transition-all duration-300 absolute [&>*]:hover:p-2 [&_*]:hover:border-white ease-out">
                     <div class="w-full h-full rounded-full border-2 border-white transition-all duration-300 ease-out">
                         <div class="border-2 border-transparent w-full h-full rounded-full transition-all duration-300 flex justify-center items-center ease-out">
                             <h3 class="text-white text-center font-rodondo text-3xl drop-shadow-sm">Start</h3>

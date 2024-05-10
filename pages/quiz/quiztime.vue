@@ -413,7 +413,7 @@ const timeDuration = computed(() => {
 
                         <div v-for="(option, index) in questions[currentID].options" :key="index" class="basis-full md:basis-1/2 px-3 mt-6">
                             <div class="h-20 w-full relative flex justify-center items-center">
-                                <div @mouseenter="uiTick" @click="answerQuestion(index)" class="border-2 border-w w-full rounded-full absolute hover:opacity-100 hover:scale-105 hover:[&>div]:m-1 hover:[&>div]:!border-white transition-all cursor-pointer " >
+                                <div @mouseenter="uiTick" @click="answerQuestion(index)" class="border-2 border-w w-full rounded-full absolute hover:opacity-100 hover:scale-105 hover:[&>div]:animate-border-pulse-slow hover:[&>div]:m-1  transition-all cursor-pointer " >
                                     <div class="p-3 flex items-center transition-all border-2 rounded-full border-transparent" :class="hasAnswered && questions[currentID].correctAnswer == index ? 'bg-emerald-600/75' : questions[currentID].correctAnswer != index && questions[currentID].correctAnswer != questions[currentID].answer && hasAnswered ? 'bg-red-600/50' : 'bg-transparent'">
                                         <div class="w-12 h-12 relative">
                                             <img v-if="questions[currentID].answer != index || hasAnswered == false" src="/images/karma/karmaRing.png" class="absolute w-12 h-12 top-0 left-0" />
@@ -470,23 +470,26 @@ const timeDuration = computed(() => {
                             <p class="text-white text-right text-lg drop-shadow-sm">{{ totalTime }}s</p>
                         </div>
                         <div class="w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent my-8 rounded-full"></div>
-                        <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Rank</h2>
+                        <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Rank: {{ correctAnswers / questions.length * 100 }}%</h2>
                         <!-- base rank from karma 1 to 5, based on percentage of correct answers, if all answers correct, karma 9 -->
-                        <div class="relative w-20 h-20 mt-6">
-                            <div class="absolute">
-                                <img src="/images/karma/karmaRing.png" class="w-20 h-20 mx-auto" />
+                        <div class="w-full relative flex justify-center items-center">
+                            <div class="relative w-20 h-20 mt-6">
+                                <div class="absolute">
+                                    <img src="/images/karma/karmaRing.png" class="w-20 h-20 mx-auto" />
+                                </div>
+                                <!-- again, sorry to any web developers, i really am -->
+                                <div class="absolute">
+                                    <img v-if="rank == 0 || rank == 1" src="/images/karma/karma0.png" class="w-20 h-20 mx-auto" />
+                                    <img v-else-if="rank == 2" src="/images/karma/karma1.png" class="w-20 h-20 mx-auto" />
+                                    <img v-else-if="rank == 3" src="/images/karma/karma2.png" class="w-20 h-20 mx-auto" />
+                                    <img v-else-if="rank == 4" src="/images/karma/karma3.png" class="w-20 h-20 mx-auto" />
+                                    <img v-else-if="rank == 5" src="/images/karma/karma4.png" class="w-20 h-20 mx-auto" />
+                                    <img v-else-if="rank == 9" src="/images/karma/karma9.png" class="w-20 h-20 mx-auto" />
+                                </div>
                             </div>
-                            <div class="absolute">
-                                <img v-if="rank == 0" src="/images/karma/karma0.png" class="w-20 h-20 mx-auto" />
-                                <img v-else-if="rank == 1" src="/images/karma/karma1.png" class="w-20 h-20 mx-auto" />
-                                <img v-else-if="rank == 2" src="/images/karma/karma2.png" class="w-20 h-20 mx-auto" />
-                                <img v-else-if="rank == 3" src="/images/karma/karma3.png" class="w-20 h-20 mx-auto" />
-                                <img v-else-if="rank == 4" src="/images/karma/karma4.png" class="w-20 h-20 mx-auto" />
-                                <img v-else-if="rank == 5" src="/images/karma/karma5.png" class="w-20 h-20 mx-auto" />
-                                <img v-else-if="rank == 9" src="/images/karma/karma9.png" class="w-20 h-20 mx-auto" />
-                            </div>
-                            
                         </div>
+                       
+
                         <p class="text-white text-center font-rodondo mt-6 text-2xl drop-shadow-sm">{{ rankMsg }}</p>
 
                         <div class="w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent my-8 rounded-full"></div>
