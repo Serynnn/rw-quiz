@@ -356,7 +356,7 @@ const hunterQuestions = ref([{
 },{
     id: 13,
     question:'What does this scavenger marking represent?',
-    image:'/images/quiz/hunteri1-NOCHEATING.png',
+    image:'/images/quiz/hunteri1-NOCHEATING.webp',
     options: ['Treasury','Toll','Echo','Companionship'],
     answer: 0,
     correctAnswer: 0,
