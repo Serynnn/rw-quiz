@@ -48,7 +48,7 @@ import MetalHit from '../assets/audio/effects/UIMetalHit.wav'
                 <h2 class="text-white font-rodondo text-4xl drop-shadow-sm mt-4">What???</h2>
                 <p class="text-white font-segoue text-lg">A quiz with no real purpose. i initally wanted to create GeoGeussr for rain world but i realized someone someone had already made it half way through so i pivoted to this. <br/> <NuxtLink to="https://rwgg.isaacelenbaas.com/RWGG.html" class="font-bold underline">Go check out their website!</NuxtLink></p>
                 <h2 class="text-white font-rodondo text-4xl drop-shadow-sm mt-4">Why???</h2>
-                <p class="text-white font-segoue text-lg">Mostly just for fun and to mess about with trying to recreate rain world's style and UI in a website</p>
+                <p class="text-white font-segoue text-lg">Mostly just for fun and to mess about with trying to recreate rain world's style and UI in a website. <br/><br/>Despite that if you have any constructive criticism, feel free to message me it on twitter. I'd be happy to hear it!</p>
                 <h2 class="text-white font-rodondo text-4xl drop-shadow-sm mt-4">How???</h2>
                 <p class="text-white font-segoue text-lg">Made using Vue3 and Nuxt.</p>
                 <h2 class="text-white font-rodondo text-4xl drop-shadow-sm mt-4">When???</h2>

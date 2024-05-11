@@ -45,7 +45,7 @@ const easyQuestions = ref([
    {
         id: 0,
         question:'True or False, Blue lizards have more HP than Strawberry lizards',
-        image:'',
+        image:'/images/quiz/bluelizard.png',
         options: ['True', 'False'],
         answer: 0,
         correctAnswer: 1,
@@ -53,7 +53,7 @@ const easyQuestions = ref([
    },{
         id: 1,
         question:'How many spear hits does it normally take for a regular vulture to fly away?',
-        image:'',
+        image:'/images/quiz/Vulture.png',
         options: ['1', '2', '4', '5'],
         answer: 0,
         correctAnswer: 1,
@@ -61,7 +61,7 @@ const easyQuestions = ref([
    },{
         id: 2,
         question:'What is the karma requirement to get from Chimney Canopy to sky islands?',
-        image:'',
+        image:'https://static.miraheze.org/rainworldwiki/thumb/c/c8/Chimney_Canopy_region_screen.png/250px-Chimney_Canopy_region_screen.png',
         options: ['2', '3', '4', '5'],
         answer: 0,
         correctAnswer: 0,
@@ -77,64 +77,339 @@ const easyQuestions = ref([
    },{
         id: 4,
         question:'How many neurons does moon start with by default in survivors campaign?',
-        image:'',
+        image:'/images/quiz/Moon.png',
         options: ['4', '5', '6', '7'],
         answer: 0,
         correctAnswer: 1,
         timeTaken: 0,
    },{
         id: 5,
-        question:'What is the name of the slugcat you play as?',
-        image:'',
-        options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
+        question:`What is the name of Five Pebbles' pseudonym?`,
+        image:'https://static.miraheze.org/rainworldwiki/7/75/Pebbles.png',
+        options: ['Grey Wind', 'Pleading Intellect', 'Erratic Pulse', 'Wandering Omen', 'Epoch of Clouds'],
         answer: 0,
-        correctAnswer: 0,
+        correctAnswer: 2,
         timeTaken: 0,
    },{
         id: 6,
-        question:'What is the name of the slugcat you play as?',
-        image:'',
-        options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
+        question:'What is the correct hunger bar for monk',
+        image:'/images/quiz/emptypips.png',
+        options: ['4 Required, 1 Stored', '3 Required, 4 Stored', '2 Required, 2 Stored', '3 Required, 2 Stored'],
         answer: 0,
-        correctAnswer: 0,
+        correctAnswer: 3,
         timeTaken: 0,
    },{
         id: 7,
-        question:'What is the name of the slugcat you play as?',
-        image:'',
-        options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
+        question:'Which region is this?',
+        image:'/images/quiz/monki1-NOCHEATING.png',
+        options: ['Industrial Complex', 'Outskirts', 'Shaded Citadel', 'Chimney Canopy'],
         answer: 0,
         correctAnswer: 0,
         timeTaken: 0,
    },{
         id: 8,
-        question:'What is the name of the slugcat you play as?',
+        question:'What order in the timeline are the 3 base game campaigns?',
         image:'',
-        options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
+        options: ['Surivor, Monk, Hunter', 'Hunter, Monk, Survivor', 'Monk, Survivor, Hunter', 'Hunter, Survivor, Monk'],
         answer: 0,
-        correctAnswer: 0,
+        correctAnswer: 3,
         timeTaken: 0,
-   }
+   },{
+        id: 9,
+        question:`What region does the track 'Floes' play in?`,
+        image:'',
+        options: ['Garbage Wastes', 'Underhang', 'Shaded Citadel', 'Subterranean', 'Shoreline'],
+        answer: 0,
+        correctAnswer: 2,
+        timeTaken: 0,
+   },
 ]);
 
 const mediumQuestions = ref([{
-    id: 0,
-    question:'What is the name of the slugcat you play as?',
-    image:'',
-    options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
-    answer: 0,
-    correctAnswer: 0,
-    timeTaken: 0,
+        id: 0,
+        question:'Which of these does NOT have an albino variant?',
+        image:'',
+        options: ['Vulture', 'Jetfish', 'Green Lizard', 'King Vulture'],
+        answer: 0,
+        correctAnswer: 2,
+        timeTaken: 0,
     },{
         id: 1,
-        question:'What is the name of the slugcat you play as?',
+        question:'What is the karma requirement to get from drainage to subterranean?',
+        image:'https://static.miraheze.org/rainworldwiki/9/9d/Drainage_System_region_screen.png',
+        options: ['2', '3', '4', '5'],
+        answer: 0,
+        correctAnswer: 2,
+        timeTaken: 0,
+    },{
+        id: 2,
+        question:'True or False, Monk has access to an extra shelter in shoreline',
         image:'',
-        options: ['Hunter', 'Survivor', 'Monk', 'Rivulet'],
+        options: ['True', 'False'],
         answer: 0,
         correctAnswer: 0,
         timeTaken: 0,
-    },
+    },{
+        id: 3,
+        question:'How many food pips does eating a red lizard give for hunter',
+        image:'/images/quiz/redlizard.png',
+        options: ['10', '9', '6', '4.5'],
+        answer: 0,
+        correctAnswer: 1,
+        timeTaken: 0,
+    },{
+        id: 4,
+        question:'True or False, Spearmaster starts the campaign with the mark of communication',
+        image:'https://static.miraheze.org/rainworldwiki/a/af/Spearmaster_select_screen_%28Messenger%29.png',
+        options: ['True', 'False'],
+        answer: 0,
+        correctAnswer: 1,
+        timeTaken: 0,
+    },{
+        id: 5,
+        question:'Which is the most valuable to scavengers out of the following;',
+        image:'',
+        options: ['Beehive', 'Vulture Mask', 'Karma Flower', 'Explosive Spear', 'Overseer Eye'],
+        answer: 0,
+        correctAnswer: 4,
+        timeTaken: 0,
+    },{
+        id: 6,
+        question:'What region gate is this?',
+        image:'/images/quiz/survi1-NOCHEATING.png',
+        options: ['SH - SL', 'HI - SH', 'SB - SL', 'LF - SU'],
+        answer: 0,
+        correctAnswer: 3,
+        timeTaken: 0,
+    },{
+        id: 7,
+        question:'Besides Snails, how can you remove attached jungle leeches',
+        image:'/images/quiz/jungleleech.png',
+        options: ['Worm Grass', 'Sporepuff', 'Hazer', 'Cherry Bomb'],
+        answer: 0,
+        correctAnswer: 0,
+        timeTaken: 0,
+    },{
+        id: 8,
+        question:'Elite scavenger masks come in how many variants?',
+        image:'https://static.miraheze.org/rainworldwiki/1/12/Elite_Scavenger_infobox_image.png',
+        options: ['2', '3', '4', '5'],
+        answer: 0,
+        correctAnswer: 1,
+        timeTaken: 0,
+    },{
+        id: 9,
+        question:`What region does the track 'White Lizard' play in?`,
+        image:'',
+        options: ['Subterranean', 'Sky Islands', 'Chimney Canopy', 'The Wall', 'The Leg'],
+        answer: 0,
+        correctAnswer: 4,
+        timeTaken: 0,
+    },{
+        id: 10,
+        question:`What color are the slugpups in Arti's flashbacks?`,
+        image:'',
+        options: ['Yellow and Red', 'Green and Blue', 'Blue and Turquoise', 'Orange and Purple'],
+        answer: 0,
+        correctAnswer: 2,
+        timeTaken: 0,
+    },{
+        id: 11,
+        question:`In saint's campaign, what region does not get renamed?`,
+        image:'',
+        options: ['Pipeyard', 'Farm Arrays', 'Drainage System', 'Submerged Superstructure'],
+        answer: 0,
+        correctAnswer: 3,
+        timeTaken: 0,
+    },{
+        id: 12,
+        question:`Which of these campaigns has the least rot infested variant of Five pebbles?`,
+        image:'https://static.miraheze.org/rainworldwiki/a/a8/Five_Pebbles_region_screen.png',
+        options: ['Hunter', 'Survivor', 'Monk', 'Gourmand'],
+        answer: 0,
+        correctAnswer: 0,
+        timeTaken: 0,
+    },{
+        id: 13,
+        question:`Which passage is this?`,
+        image:'/images/quiz/survi2-NOCHEATING.webp',
+        options: ['The Hunter', 'The Outlaw', 'The Chieftan', 'The Dragon Slayer'],
+        answer: 0,
+        correctAnswer: 3,
+        timeTaken: 0,
+    },{
+        id: 14,
+        question:`Where is the the echo 'Six Grains of Gravel, Mountains Abound' found?`,
+        image:'',
+        options: ['Chimney Canopy', 'The Wall', 'Shaded Citadel', 'Farm Arrays', 'Subterranean', 'Sky Islands'],
+        answer: 0,
+        correctAnswer: 1,
+        timeTaken: 0,
+    }
         
+])
+
+const hunterQuestions = ref([{
+    id: 0,
+    question:'Besides flashbangs, what other item can be used to blind miros birds?',
+    image:'https://static.miraheze.org/rainworldwiki/7/76/Miros_Bird_infobox_image.png',
+    options: ['Hazer','Jellyfish','Electric Spear','Sporepuff'],
+    answer: 0,
+    correctAnswer: 0,
+    timeTaken: 0,
+},{
+    id: 1,
+    question:'Which of these regions have the least amount of rooms? (Downpour rooms included)',
+    image:'',
+    options: ['Drainage System','Sky Islands',' Metropolis','Outskirts'],
+    answer: 0,
+    correctAnswer: 1,
+    timeTaken: 0,
+},{
+    id: 2,
+    question:'True or False, Spearmaster has not been sent to five pebbles before the events of their campaign',
+    image:'https://static.miraheze.org/rainworldwiki/7/71/SpearmasterSleepingSprite.png',
+    options: ['True','False'],
+    answer: 0,
+    correctAnswer: 1,
+    timeTaken: 0,
+},{
+    id: 3,
+    question:'Which of these regions spawn albino jetfish?',
+    image:'https://static.miraheze.org/rainworldwiki/d/d0/Albino_Jetfish.png',
+    options: ['Pipeyard','Sunken Pier','The Gutter','Silent Construct'],
+    answer: 0,
+    correctAnswer: 0,
+    timeTaken: 0,
+},{
+    id: 4,
+    question:'How many food pips does the Giant Jellyfish give when speared by Spearmaster?',
+    image:'https://static.miraheze.org/rainworldwiki/2/2c/Giant_Jellyfish_infobox_image.png',
+    options: ['0.5','3','5','10'],
+    answer: 0,
+    correctAnswer: 3,
+    timeTaken: 0,
+},{
+    id: 5,
+    question:'Which of these passages can be progressed without having earned the survivor passage?',
+    image:'/images/quiz/No survivor.png',
+    options: ['The Wanderer','The Dragon Slayer','The Pilgrim','The Nomad'],
+    answer: 0,
+    correctAnswer: 2,
+    timeTaken: 0,
+},{
+    id: 6,
+    question:'Which is the correct hunger bar for hunter',
+    image:'/images/quiz/emptypips.png',
+    options: ['5 Required, 4 Stored','6 Required, 4 Stored','5 Required, 3 Stored','6 Required, 3 Stored'],
+    answer: 0,
+    correctAnswer: 3,
+    timeTaken: 0,
+},{
+    id: 7,
+    question:'What is the highest amount of karma Arti can borrow from a scavenger?',
+    image:'',
+    options: ['4','5','6','8'],
+    answer: 0,
+    correctAnswer: 1,
+    timeTaken: 0,
+},{
+    id: 8,
+    question:'Which of these regions does NOT have a scavenger toll',
+    image:'https://static.miraheze.org/rainworldwiki/9/9e/12.png',
+    options: ['Undergrowth','Pipeyard','Farm Arrays','Outer Expanse'],
+    answer: 0,
+    correctAnswer: 1,
+    timeTaken: 0,
+},{
+    id: 9,
+    question:'What region is this?',
+    image:'/images/quiz/hunter-roomsc.png',
+    options: ['Metropolis','Subterranean','Outer Expanse','Silent Construct'],
+    answer: 0,
+    correctAnswer: 0,
+    timeTaken: 0,
+},{
+    id: 10,
+    question:'What is the most valuable item to scavengers?',
+    image:'',
+    options: ['Pearl','King Vulture Mask','Inspector Eye','Singularity Bomb'],
+    answer: 0,
+    correctAnswer: 2,
+    timeTaken: 0,
+},{
+    id: 11,
+    question:'How many different types of lizards are there? (Includes downpour lizards)',
+    image:'/images/quiz/GreenLizard.webp',
+    options: ['9','10','12','13'],
+    answer: 0,
+    correctAnswer: 3,
+    timeTaken: 0,
+},{
+    id: 12,
+    question:'True or False, It is possible for Arti to die to regular explosives if hit by enough',
+    image:'',
+    options: ['True','False'],
+    answer: 0,
+    correctAnswer: 1,
+    timeTaken: 0,
+},{
+    id: 13,
+    question:'What does this scavenger marking represent?',
+    image:'/images/quiz/hunteri1-NOCHEATING.png',
+    options: ['Treasury','Toll','Echo','Companionship'],
+    answer: 0,
+    correctAnswer: 0,
+    timeTaken: 0,
+},{
+    id: 14,
+    question:'Which item can be regurgitated by gourmand?',
+    image:'/images/quiz/gourmand.jpg',
+    options: ['Karma Flower','Flashbang','Beehive','Noodlefly Egg'],
+    answer: 0,
+    correctAnswer: 2,
+    timeTaken: 0,
+},{
+    id: 15,
+    question:`Where is the echo 'Rhinestones beneath Shattered Glass' located?`,
+    image:'',
+    options: ['Metropolis','Shoreline','Shaded Citadel','Undergrowth'],
+    answer: 0,
+    correctAnswer: 3,
+    timeTaken: 0,
+},{
+    id: 16,
+    question:'What is the karma requirement to get from Undergrowth to Glacial Wasteland?',
+    image:'https://static.miraheze.org/rainworldwiki/thumb/4/42/Undergrowth_region_screen.png/250px-Undergrowth_region_screen.png',
+    options: ['1','2','3','4','5'],
+    answer: 0,
+    correctAnswer: 0,
+    timeTaken: 0,
+},{
+    id: 17,
+    question:'What song plays in the west bridge in Shaded Citadel?',
+    image:'/images/quiz/hunteri2-NOCHEATING.png',
+    options: ['Floes','Black Moonlight','Lack of Comfort','Lonesound'],
+    answer: 0,
+    correctAnswer: 1,
+    timeTaken: 0,
+},{
+    id: 18,
+    question:`Which of these are not a part of Gourmand's food quest?`,
+    image:'',
+    options: ['Grapple Worm','Snail','Eggbug Egg','Black Lizard'],
+    answer: 0,
+    correctAnswer: 2,
+    timeTaken: 0,
+},{
+    id: 19,
+    question:'Which of these creatures give the most amount of food pips when eaten by hunter?',
+    image:'/images/quiz/emptypips.png',
+    options: ['MLL','Miros Vulture','Red Lizard','King Vulture'],
+    answer: 0,
+    correctAnswer: 3,
+    timeTaken: 0,
+}
 ])
 
 const testQuestions = ref([{
@@ -212,11 +487,11 @@ const testQuestions = ref([{
 const timeDuration = computed(() => {
     const params = new URLSearchParams(window.location.search);
     switch (params.get('difficulty')) {
-        case "easy":
-            return 120;
-        case "medium":
+        case "monk":
             return 60;
-        case "hard":
+        case "survivor":
+            return 45;
+        case "hunter":
             return 30;
         case "test":
             return 30;
@@ -378,15 +653,24 @@ const timeDuration = computed(() => {
         // get current route, there is a query string for difficulty
         const params = new URLSearchParams(window.location.search);
         switch (params.get('difficulty')) {
+            case "monk":
+                difficulty.value = "monk";
+                questions.value = easyQuestions.value;
+                break;
+            case "survivor":
+                difficulty.value = "survivor";
+                questions.value = mediumQuestions.value;
+                break;
+            case "hunter":
+                difficulty.value = "hunter";
+                questions.value = hunterQuestions.value;
+                break;
             case "test":
+                difficulty.value = "test";
                 questions.value = testQuestions.value;
                 break;
-            // case "medium":
-            //     questions.value = mediumQuestions.value;
-            //     break;
-            // case "hard":
-            //     questions.value = hardQuestions.value;
-            //     break;
+            default:
+                questions.value = easyQuestions.value;
         }
         instantiateTimer(timeDuration.value);
 
@@ -406,7 +690,7 @@ const timeDuration = computed(() => {
             <div v-if="showTab == 'questions'" class="relative">
                 <!-- <div id="next" class="absolute bottom-0"></div> -->
                 <h1 id="top" class="text-white text-center font-rodondo text-6xl md:text-8xl drop-shadow-sm">Question {{ currentID+1 }}</h1>
-                <div class="w-full md:w-[40rem] mt-5">
+                <div class="w-full md:w-[60rem] mt-5">
                     <img v-if="questions[currentID].image" :src="questions[currentID].image"  class="w-auto h-full max-h-80 mx-auto border-2 border-white rounded-lg" />
                     <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">{{ questions[currentID].question }}</h2>
                     <div class="flex flex-wrap justify-center">
@@ -422,13 +706,13 @@ const timeDuration = computed(() => {
                                             <!-- i am SO fucking sorry to any actually good web developers looking at the horseshit i'm about to code i SWEAR i had no idea how to do it dynamically IM SORRYYYYY :(((( -->
                                             <NuxtImg v-if="index==0" src="/images/karma/karma0.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 1" src="/images/karma/karma1.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 2" src="/images/karma/karma2.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 3" src="/images/karma/karma3.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 4" src="/images/karma/karma4.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 5" src="/images/karma/karma5.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 6" src="/images/karma/karma6.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 7" src="/images/karma/karma7.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else-if="index == 8" src="/images/karma/karma8.png" class="absolute w-12 h-12 top-0 left-0" /><NuxtImg v-else src="/images/karma/karma9.png" class="absolute w-12 h-12 top-0 left-0" />
                                         </div>
-                                        <p class="text-white mx-auto font-rodondo text-3xl">{{ option }}</p>
+                                        <p class="text-white mx-auto font-rodondo text-3xl text-center">{{ option }}</p>
                                     </div>    
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="w-full min-h-64 flex mt-10">
+                        <div id="bottomCard" class="w-full min-h-60 py-10 flex">
                             <Transition name="fade">
                                 <div v-if="hasAnswered && questions[currentID].correctAnswer == questions[currentID].answer" class="w-full">
                                     <p class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Correct!</p>
@@ -455,10 +739,10 @@ const timeDuration = computed(() => {
             </div>
             <div v-else-if="showTab == 'results'">
                 <div class="w-full flex flex-wrap justify-center items-center">
-                    <div class="basis-full md:basis-1/2 flex flex-col items-center p-10">
+                    <div class="basis-full md:basis-1/3 flex flex-col items-center p-10">
                         <h1 class="text-white text-center font-rodondo text-8xl drop-shadow-sm">Results</h1>
                         <div class="flex justify-between w-60">
-                            <p class="text-white text-left text-lg drop-shadow-sm">Difficulty:</p>
+                            <p class="text-white text-left text-lg drop-shadow-sm">Quiz:</p>
                             <p class="text-white text-right text-lg drop-shadow-sm capitalize">{{ difficulty }}</p>
                         </div>
                         <div class="flex justify-between w-60">
@@ -470,7 +754,7 @@ const timeDuration = computed(() => {
                             <p class="text-white text-right text-lg drop-shadow-sm">{{ totalTime }}s</p>
                         </div>
                         <div class="w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent my-8 rounded-full"></div>
-                        <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Rank: {{ correctAnswers / questions.length * 100 }}%</h2>
+                        <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Rank: {{ Math.round(correctAnswers / questions.length * 100) }}%</h2>
                         <!-- base rank from karma 1 to 5, based on percentage of correct answers, if all answers correct, karma 9 -->
                         <div class="w-full relative flex justify-center items-center">
                             <div class="relative w-20 h-20 mt-6">
@@ -501,7 +785,7 @@ const timeDuration = computed(() => {
                         <!-- back button -->
                         <div class="flex justify-center w-full relative items-center mt-6 h-12"><NuxtLink v-on:mouseenter="uiTick" @click="uiBack" to="/" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >Back</span></UButton></NuxtLink></div>
                     </div>
-                    <div class="basis-full md:basis-1/2 scale-90 md:scale-75">
+                    <div class="basis-full md:basis-2/3 scale-90 md:scale-75">
                         <transition tag="div" name="fade" mode="out-in" class="sticky">
                             <div v-if="showResults">
                                 <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">{{ questions[selectedQuestion].question }}</h2>

@@ -14,25 +14,25 @@
     const backDelay = ref(false);
     const emit = defineEmits(['arenaSongs']);
     
-    const difficulty = ref("medium");
+    const difficulty = ref("monk");
 
-    const easySettings = {
+    const monkSettings = {
         title: "Monk",
-        description: "Selection of easier questions with a longer time limit",
+        description: "A selection of easier trivia that you will likely know from playing the game",
         questions: 10,
         timePerQuestion: 60,
     };
 
-    const mediumSettings = {
+    const survSettings = {
         title: "Survivor",
-        description: "Selection of medium difficulty questions with a moderate time limit",
+        description: "A selection of more specific trivia with some harder questions thrown in",
         questions: 15,
         timePerQuestion: 45,
     };
 
-    const hardSettings = {
+    const hunterSettings = {
         title: "Hunter",
-        description: "Selection of harder questions with a shorter time limit",
+        description: "A selection of more obscure trivia and hard to remember facts about the game. Good luck!",
         questions: 20,
         timePerQuestion: 30,
     };
@@ -46,16 +46,16 @@
 
     const settings = computed(() => {
         switch (difficulty.value) {
-            case "easy":
-                return easySettings;
-            case "medium":
-                return mediumSettings;
-            case "hard":
-                return hardSettings;
+            case "monk":
+                return monkSettings;
+            case "survivor":
+                return survSettings;
+            case "hunter":
+                return hunterSettings;
             case "test":
                 return testSettings;
             default:
-                return mediumSettings;
+                return monkSettings;
         }
     });
 
@@ -141,28 +141,28 @@
         <h1 class="text-white text-center font-rodondo text-8xl drop-shadow-sm">Quiz</h1>
         <div class="flex mx-auto justify-center md:absolute w-28 items-center top-6 left-0 h-12"><NuxtLink to="/" v-on:mouseenter="uiTick" @click="uiBack" class="!w-28 hover:!w-[7.5rem] rw-btn-wrapper "><UButton color="RW" class="rw-btn !w-28" ><span >Back</span></UButton></NuxtLink></div>
         <div class="w-full md:w-[40rem] mt-20">
-            <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Select Difficulty</h2>
+            <h2 class="text-white text-center font-rodondo text-4xl drop-shadow-sm">Select Quiz</h2>
             <div class="flex flex-wrap justify-center items-center gap-x-4 mt-3 [&_*]:select-none">
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('easy')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'easy' ? 'scale-105' : 'opacity-75'">
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('monk')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'monk' ? 'scale-105' : 'opacity-75'">
                     <div class="p-3 border-2 border-transparent transition-all ease-out rounded-xl">
                         <img src="/images/Monk_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
                     </div>
                 </div>
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('medium')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'medium' ? 'scale-105' : 'opacity-75'">
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('survivor')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'survivor' ? 'scale-105' : 'opacity-75'">
                     <div class="p-3 border-2 border-transparent transition-all ease-out rounded-xl">
                         <img src="/images/Survivor_portrait.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
                     </div>    
                 </div>
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('hard')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'hard' ? 'scale-105' : 'opacity-75'">
+                <div v-on:mouseenter="uiTick" @click="changeDifficulty('hunter')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'hunter' ? 'scale-105' : 'opacity-75'">
                     <div class="p-3 border-2 border-transparent transition-all ease-out rounded-xl">
                         <img src="/images/Hunter.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
                     </div>
                 </div>
-                <div v-on:mouseenter="uiTick" @click="changeDifficulty('test')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'test' ? 'scale-105' : 'opacity-75'">
+                <!-- <div v-on:mouseenter="uiTick" @click="changeDifficulty('test')" class="border-2 border-w rounded-xl hover:opacity-100 hover:scale-105 transition-all hover:[&>*]:m-1 hover:[&>*]:animate-border-pulse cursor-pointer mt-3" :class="difficulty == 'test' ? 'scale-105' : 'opacity-75'">
                     <div class="p-3 border-2 border-transparent transition-all ease-out rounded-xl">
                         <img src="/images/Nightcat.webp" draggable="false" class="w-24 h-24 pointer-events-none" />
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="text-white text-center mt-4 w-fit mx-auto">
                 <div class="px-4">

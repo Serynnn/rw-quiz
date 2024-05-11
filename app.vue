@@ -109,6 +109,7 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
     };
 
     const arenaTrackShuffle = () => {
+      clearTimeout(arenaLooper.value!);
       songQueue.value.sort(() => Math.random() - 0.5); 
       arenaTrackQueue();
     }
@@ -268,7 +269,7 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
 <template>
   <Transition name="song">
     <div v-show="showSongName" class="bottom-0 left-0 absolute h-12 w-full bg-black/75 p-3">
-      <h2 class="text-white font-rodondo text-4xl drop-shadow-sm">{{ songQueue[trackIndex].name }}</h2>
+      <h2 class="text-white font-rodondo text-4xl drop-shadow-sm">♪ {{ songQueue[trackIndex].name }}</h2>
     </div>
   </Transition>
   <Transition name="fade" >
@@ -287,11 +288,11 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
   <main class="back-row-toggle h-lvh splat-toggle bg-gradient-to-b from-neutral-950 to-black overflow-y-auto overflow-x-hidden">
     <div v-html="frontDrops" class="rain front-row z-0 overflow-hidden"></div>
     <div v-html="backDrops" class="rain back-row z-0 overflow-hidden"></div>
-    <div v-if="loaded" class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh py-10 px-3">
+    <div v-if="loaded" class="container mx-auto z-20 h-fit flex flex-col justify-center relative items-center min-h-svh pt-10 pb-20 md:py-10 px-3">
       <Transition name="fade" mode="out-in">
         <div v-if="disclaimer" class="text-center font-light">
           <h1 class="text-orange-300 text-center font-rodondo text-6xl md:text-8xl drop-shadow-sm">Disclaimer</h1>
-          <span class="text-white text-xl drop-shadow-s mx-auto ">This site contains spoilers for both Rain World and Rain World: Downpour<br/><br/>This site is also made purely for fun and probably isnt perfect<br/><br/>Note: refreshing in the middle of a quiz will reset your progress<br/>I'm to lazy to make it save sorryy <:<br/><br/>Rain World is the property of Videocult</span>
+          <span class="text-white text-xl drop-shadow-s mx-auto ">This site contains spoilers for both Rain World and Rain World: Downpour<br/><br/>This site is also made purely for fun, there will likely be issues here and there. Please dm any issues with the site to my twitter.<br/><br/>Note: refreshing in the middle of a quiz will reset your progress<br/>I'm to lazy to make it save sorryy <:<br/><br/>Rain World is the property of Videocult <span class="text-sm text-white/20">pls dont sue c :</span></span>
           <div class="flex w-fit items-center justify-center mx-auto mt-6"><div @click="NSA = !NSA; uiTick()" class="w-8 h-8 border-2 rounded-lg border-white hover:scale-110 transition-all ease-out duration-150 cursor-pointer"><UIcon v-if="NSA" name="i-heroicons-check-solid" class="text-white w-full h-full" /></div><span class="text-white text-md font-light drop-shadow-s mx-auto ml-2"> Do not show again</span></div>
           <div class="flex justify-center w-48 items-center mx-auto h-12 mt-6"><div v-on:mouseenter="uiTick" @click="hideDisclaimer(); uiClick()" class="rw-btn-wrapper"><UButton color="RW" class="rw-btn" ><span >I Understand</span></UButton></div></div>
         </div>
