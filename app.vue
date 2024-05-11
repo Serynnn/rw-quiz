@@ -235,12 +235,12 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
       }
 
       const toggleMute = () => {
-        if(volume.value == 1) {
-          volume.value = 0
+        if(volume.value == 0.5) {
+          volume.value = 0;
           audio.value!.volume = 0;
         }else {
-          volume.value = 1
-          audio.value!.volume = 1;
+          volume.value = 0.5;
+          audio.value!.volume = 0.5;
         }
       }
 
