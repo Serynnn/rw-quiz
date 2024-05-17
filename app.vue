@@ -9,24 +9,24 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
-import sundown from 'assets/audio/Sundown.mp3'
-import rooftops from 'assets/audio/Rooftops.mp3'
-import bioEngineering from 'assets/audio/Bio-Engineering.mp3'
-import blackMoonlight from 'assets/audio/Black_Moonlight.mp3'
-import deepEnergy from 'assets/audio/Deep_Energy.mp3'
-import floes from 'assets/audio/Floes.mp3'
-import garbageWorms from 'assets/audio/Garbage_Worms.mp3'
-import kayava from 'assets/audio/Kayava.mp3'
-import lovelyArps from 'assets/audio/Lovely_Arps.mp3'
-import mistEngine from 'assets/audio/Mist_Engine.mp3'
-import skySprites from 'assets/audio/Sky_Sprite.mp3'
-import swayingFronds from 'assets/audio/Swaying_Fronds.mp3'
+//import sundown from 'assets/audio/Sundown.mp3'
+//import rooftops from 'assets/audio/Rooftops.mp3'
+//import bioEngineering from 'assets/audio/Bio-Engineering.mp3'
+//import blackMoonlight from 'assets/audio/Black_Moonlight.mp3'
+//import deepEnergy from 'assets/audio/Deep_Energy.mp3'
+//import floes from 'assets/audio/Floes.mp3'
+//import garbageWorms from 'assets/audio/Garbage_Worms.mp3'
+//import kayava from 'assets/audio/Kayava.mp3'
+//import lovelyArps from 'assets/audio/Lovely_Arps.mp3'
+//import mistEngine from 'assets/audio/Mist_Engine.mp3'
+//import skySprites from 'assets/audio/Sky_Sprite.mp3'
+//import swayingFronds from 'assets/audio/Swaying_Fronds.mp3'
 
-import tick1 from '../assets/audio/effects/UIMetal1.wav'
-import tick2 from '../assets/audio/effects/UIMetal2.wav'
-import tick3 from '../assets/audio/effects/UIMetal3.wav'
-import tick4 from '../assets/audio/effects/UIMetal4.wav'
-import UIArp from '../assets/audio/effects/UIArp.wav'
+// import tick1 from '../assets/audio/effects/UIMetal1.wav'
+// import tick2 from '../assets/audio/effects/UIMetal2.wav'
+// import tick3 from '../assets/audio/effects/UIMetal3.wav'
+// import tick4 from '../assets/audio/effects/UIMetal4.wav'
+// import UIArp from '../assets/audio/effects/UIArp.wav'
 
     const audio = ref<HTMLAudioElement>();
     const arenaLooper = ref<NodeJS.Timeout | null>(null);
@@ -40,47 +40,47 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
     const showSongName = ref(false);
     const trackIndex = ref(0);
 
-    const songQueue = ref([{
-      track: bioEngineering,
-      name: 'Bio Engineeering',
-      duration: 146,
-    },{
-      track: blackMoonlight,
-      name: 'Black Moonlight',
-      duration: 190,
-    },{
-      track: deepEnergy,
-      name: 'Deep Energy',
-      duration: 138,
-    },{
-      track: floes,
-      name: 'Floes',
-      duration: 164,
-    },{
-      track: garbageWorms,
-      name: 'Garbage Worms',
-      duration: 90,
-    },{
-      track: kayava,
-      name: 'Kayava',
-      duration: 219,
-    },{
-      track: lovelyArps,
-      name: 'Lovely Arps',
-      duration: 200,
-    },{
-      track: mistEngine,
-      name: 'Mist Engine',
-      duration: 157,
-    },{
-      track: skySprites,
-      name: 'Sky Sprites',
-      duration: 99,
-    },{
-      track: swayingFronds,
-      name: 'Swaying Fronds',
-      duration: 100,
-    }])
+    // const songQueue = ref([{
+    //   track: bioEngineering,
+    //   name: 'Bio Engineeering',
+    //   duration: 146,
+    // },{
+    //   track: blackMoonlight,
+    //   name: 'Black Moonlight',
+    //   duration: 190,
+    // },{
+    //   track: deepEnergy,
+    //   name: 'Deep Energy',
+    //   duration: 138,
+    // },{
+    //   track: floes,
+    //   name: 'Floes',
+    //   duration: 164,
+    // },{
+    //   track: garbageWorms,
+    //   name: 'Garbage Worms',
+    //   duration: 90,
+    // },{
+    //   track: kayava,
+    //   name: 'Kayava',
+    //   duration: 219,
+    // },{
+    //   track: lovelyArps,
+    //   name: 'Lovely Arps',
+    //   duration: 200,
+    // },{
+    //   track: mistEngine,
+    //   name: 'Mist Engine',
+    //   duration: 157,
+    // },{
+    //   track: skySprites,
+    //   name: 'Sky Sprites',
+    //   duration: 99,
+    // },{
+    //   track: swayingFronds,
+    //   name: 'Swaying Fronds',
+    //   duration: 100,
+    // }])
 
     const clickDelay = ref(false);
     const tickDelay = ref(false);
@@ -109,75 +109,75 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
     };
 
     const arenaTrackShuffle = () => {
-      clearTimeout(arenaLooper.value!);
-      songQueue.value.sort(() => Math.random() - 0.5); 
-      arenaTrackQueue();
+      // clearTimeout(arenaLooper.value!);
+      // songQueue.value.sort(() => Math.random() - 0.5); 
+      // arenaTrackQueue();
     }
 
     const arenaTrackQueue = () => {
-      trackIndex.value++;
-      if(trackIndex.value === songQueue.value.length) trackIndex.value = 0;
-      swapTrack(songQueue.value[trackIndex.value].track);
-      showSongName.value = true;
-      setTimeout(() => {
-        showSongName.value = false;
-      }, 5000);
-      arenaLooper.value = setTimeout(() => {
-        arenaTrackQueue();
-      }, songQueue.value[trackIndex.value].duration * 1000);
+      // trackIndex.value++;
+      // if(trackIndex.value === songQueue.value.length) trackIndex.value = 0;
+      // swapTrack(songQueue.value[trackIndex.value].track);
+      // showSongName.value = true;
+      // setTimeout(() => {
+      //   showSongName.value = false;
+      // }, 5000);
+      // arenaLooper.value = setTimeout(() => {
+      //   arenaTrackQueue();
+      // }, songQueue.value[trackIndex.value].duration * 1000);
     }
 
     
     
     const swapTrack = (track) => {
-        if(currentTrack.value === track) return;
-        audio.value?.pause();
-        audio.value = new Audio(track);
-        currentTrack.value = track;
-        if(track === sundown) {
-          audio.value.loop = true;
-          audio.value.currentTime = 15;
-          clearInterval(arenaLooper.value!);
-        } else {
-          audio.value.loop = false;
-        }
-        audio.value.volume = volume.value;
-        audio.value.play();
+        // if(currentTrack.value === track) return;
+        // audio.value?.pause();
+        // audio.value = new Audio(track);
+        // currentTrack.value = track;
+        // if(track === sundown) {
+        //   audio.value.loop = true;
+        //   audio.value.currentTime = 15;
+        //   clearInterval(arenaLooper.value!);
+        // } else {
+        //   audio.value.loop = false;
+        // }
+        // audio.value.volume = volume.value;
+        // audio.value.play();
     };
 
     const uiTick = () => {
-      if(tickDelay.value) return;
-      // play between 4 sound effects, give a 1 in 4 chance of playing a sound, use placeholder url for now
-      const soundEffect = Math.floor(Math.random() * 4) + 1;
+      // if(tickDelay.value) return;
+      // // play between 4 sound effects, give a 1 in 4 chance of playing a sound, use placeholder url for now
+      // const soundEffect = Math.floor(Math.random() * 4) + 1;
       
-      // case statment to play sound effect
-      switch (soundEffect) {
-        case 1:
-          new Audio(tick1).play();
-          break;
-        case 2:
-          new Audio(tick2).play();
-          break;
-        case 3:
-          new Audio(tick3).play();
-          break;
-        case 4:
-          new Audio(tick4).play();
-          break;
-      }
-      tickDelay.value = true;
-      setTimeout(() => {
-        tickDelay.value = false;
-      }, 50);
+      // // case statment to play sound effect
+      // switch (soundEffect) {
+      //   case 1:
+      //     new Audio(tick1).play();
+      //     break;
+      //   case 2:
+      //     new Audio(tick2).play();
+      //     break;
+      //   case 3:
+      //     new Audio(tick3).play();
+      //     break;
+      //   case 4:
+      //     new Audio(tick4).play();
+      //     break;
+      // }
+      // tickDelay.value = true;
+      // setTimeout(() => {
+      //   tickDelay.value = false;
+      // }, 50);
     };
 
     const uiClick = () => {
-      if(clickDelay.value) return;
-      new Audio(UIArp).play();
-      clickDelay.value = true;
-      setTimeout(() => {
-        clickDelay.value = false;
-      }, 500);
+      // if(clickDelay.value) return;
+      // new Audio(UIArp).play();
+      // clickDelay.value = true;
+      // setTimeout(() => {
+      //   clickDelay.value = false;
+      // }, 500);
     };
 
     // rotation increment equal to 360 divided by number of pips, computed
@@ -245,7 +245,7 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
       }
 
       onMounted(() => {
-        swapTrack(sundown);
+        // swapTrack(sundown);
         if(localStorage.getItem('disclaimer') === 'false') {
           disclaimer.value = false;
         }
@@ -269,7 +269,7 @@ import UIArp from '../assets/audio/effects/UIArp.wav'
 <template>
   <Transition name="song">
     <div v-show="showSongName" class="bottom-0 left-0 absolute h-12 w-full bg-black/75 p-3">
-      <h2 class="text-white font-rodondo text-4xl drop-shadow-sm">♪ {{ songQueue[trackIndex].name }}</h2>
+      <!-- <h2 class="text-white font-rodondo text-4xl drop-shadow-sm">♪ {{ songQueue[trackIndex].name }}</h2> -->
     </div>
   </Transition>
   <Transition name="fade" >

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import tick1 from '../assets/audio/effects/UIMetal1.wav'
-import tick2 from '../assets/audio/effects/UIMetal2.wav'
-import tick3 from '../assets/audio/effects/UIMetal3.wav'
-import tick4 from '../assets/audio/effects/UIMetal4.wav'
-import MetalHit from '../assets/audio/effects/UIMetalHit.wav'
-import correctSFX from '../assets/audio/effects/Karma_capBell1.wav'
-import wrongSFX from '../assets/audio/effects/Karma_capBell2.wav'
+// import tick1 from '../assets/audio/effects/UIMetal1.wav'
+// import tick2 from '../assets/audio/effects/UIMetal2.wav'
+// import tick3 from '../assets/audio/effects/UIMetal3.wav'
+// import tick4 from '../assets/audio/effects/UIMetal4.wav'
+// import MetalHit from '../assets/audio/effects/UIMetalHit.wav'
+// import correctSFX from '../assets/audio/effects/Karma_capBell1.wav'
+// import wrongSFX from '../assets/audio/effects/Karma_capBell2.wav'
 
 const difficulty = ref("easy");
 const timer = ref(0);
@@ -539,7 +539,7 @@ const timeDuration = computed(() => {
             showTab.value = 'results';
         }
         scrollTo('top');
-        new Audio(MetalHit).play();
+        // new Audio(MetalHit).play();
         // prevent spamming of the back button
         backDelay.value = true;
         setTimeout(() => {
@@ -622,21 +622,21 @@ const timeDuration = computed(() => {
     };
 
     const uiBack = () => {
-        if(backDelay.value) return;
-        new Audio(MetalHit).play();
-        // prevent spamming of the back button
-        backDelay.value = true;
-        setTimeout(() => {
-            backDelay.value = false;
-        }, 500);
+        // if(backDelay.value) return;
+        // new Audio(MetalHit).play();
+        // // prevent spamming of the back button
+        // backDelay.value = true;
+        // setTimeout(() => {
+        //     backDelay.value = false;
+        // }, 500);
     };
 
     const uiCorrect = () => {
-        new Audio(correctSFX).play();
+        // new Audio(correctSFX).play();
     };
 
     const uiWrong = () => {
-        new Audio(wrongSFX).play();
+        // new Audio(wrongSFX).play();
     };
 
     function scrollTo(id: string) {

@@ -1,14 +1,14 @@
 <script setup lang="ts">
     import { ref, computed } from 'vue';
-    import rooftops from 'assets/audio/Rooftops.mp3';
-    import tick1 from '../assets/audio/effects/UIMetal1.wav'
-    import tick2 from '../assets/audio/effects/UIMetal2.wav'
-    import tick3 from '../assets/audio/effects/UIMetal3.wav'
-    import tick4 from '../assets/audio/effects/UIMetal4.wav'
-    import pitch1 from '../assets/audio/effects/UI_UIPitch1.wav'
-    import pitch2 from '../assets/audio/effects/UI_UIPitch2.wav'
-    import MetalHit from '../assets/audio/effects/UIMetalHit.wav'
-    import impact from '../assets/audio/effects/UIImpact2.wav'
+    // import rooftops from 'assets/audio/Rooftops.mp3';
+    // import tick1 from '../assets/audio/effects/UIMetal1.wav'
+    // import tick2 from '../assets/audio/effects/UIMetal2.wav'
+    // import tick3 from '../assets/audio/effects/UIMetal3.wav'
+    // import tick4 from '../assets/audio/effects/UIMetal4.wav'
+    // import pitch1 from '../assets/audio/effects/UI_UIPitch1.wav'
+    // import pitch2 from '../assets/audio/effects/UI_UIPitch2.wav'
+    // import MetalHit from '../assets/audio/effects/UIMetalHit.wav'
+    // import impact from '../assets/audio/effects/UIImpact2.wav'
 
     const tickDelay = ref(false);
     const backDelay = ref(false);
@@ -60,69 +60,69 @@
     });
 
     const uiTick = () => {
-        if(tickDelay.value) return;
-        // play between 4 sound effects, give a 1 in 4 chance of playing a sound, use placeholder url for now
-        const soundEffect = Math.floor(Math.random() * 4) + 1;
+        // if(tickDelay.value) return;
+        // // play between 4 sound effects, give a 1 in 4 chance of playing a sound, use placeholder url for now
+        // const soundEffect = Math.floor(Math.random() * 4) + 1;
         
-        // case statment to play sound effect
-        switch (soundEffect) {
-            case 1:
-            new Audio(tick1).play();
-            break;
-            case 2:
-            new Audio(tick2).play();
-            break;
-            case 3:
-            new Audio(tick3).play();
-            break;
-            case 4:
-            new Audio(tick4).play();
-            break;
-        }
-        tickDelay.value = true;
-            setTimeout(() => {
-                tickDelay.value = false;
-            }, 50);
+        // // case statment to play sound effect
+        // switch (soundEffect) {
+        //     case 1:
+        //     new Audio(tick1).play();
+        //     break;
+        //     case 2:
+        //     new Audio(tick2).play();
+        //     break;
+        //     case 3:
+        //     new Audio(tick3).play();
+        //     break;
+        //     case 4:
+        //     new Audio(tick4).play();
+        //     break;
+        // }
+        // tickDelay.value = true;
+        //     setTimeout(() => {
+        //         tickDelay.value = false;
+        //     }, 50);
     };
 
     const uiPitch = () => {
-        if(tickDelay.value) return;
-        // play between 2 sound effects, give a 1 in 2 chance of playing a sound, use placeholder url for now
-        const soundEffect = Math.floor(Math.random() * 2) + 1;
+        // if(tickDelay.value) return;
+        // // play between 2 sound effects, give a 1 in 2 chance of playing a sound, use placeholder url for now
+        // const soundEffect = Math.floor(Math.random() * 2) + 1;
         
-        // case statment to play sound effect
-        switch (soundEffect) {
-            case 1:
-            new Audio(pitch1).play();
-            break;
-            case 2:
-            new Audio(pitch2).play();
-            break;
-        }
-        tickDelay.value = true;
-        setTimeout(() => {
-            tickDelay.value = false;
-        }, 50);
+        // // case statment to play sound effect
+        // switch (soundEffect) {
+        //     case 1:
+        //     new Audio(pitch1).play();
+        //     break;
+        //     case 2:
+        //     new Audio(pitch2).play();
+        //     break;
+        // }
+        // tickDelay.value = true;
+        // setTimeout(() => {
+        //     tickDelay.value = false;
+        // }, 50);
     };
 
     const uiBack = () => {
-        if(backDelay.value) return;
-        new Audio(MetalHit).play();
-        // prevent spamming of the back button
-        backDelay.value = true;
-        setTimeout(() => {
-            backDelay.value = false;
-        }, 500);
+        // if(backDelay.value) return;
+        // new Audio(MetalHit).play();
+        // // prevent spamming of the back button
+        // backDelay.value = true;
+        // setTimeout(() => {
+        //     backDelay.value = false;
+        // }, 500);
     };
 
     const uiImpact = () => {
-        if(backDelay.value) return;
-        new Audio(impact).play();
-        // prevent spamming of the back button
-        backDelay.value = true;
-        setTimeout(() => {
-            backDelay.value = false;
-        }, 500);
+        // if(backDelay.value) return;
+        // new Audio(impact).play();
+        // // prevent spamming of the back button
+        // backDelay.value = true;
+        // setTimeout(() => {
+        //     backDelay.value = false;
+        // }, 500);
     };
 
     const changeDifficulty = (diff) => {
@@ -132,7 +132,7 @@
 
     onMounted(() => {
       // delay by 5 seconds  
-      emit('arenaSongs');
+    //   emit('arenaSongs');
     });
     
 </script>
